@@ -46,6 +46,15 @@ namespace TucanTesting.Controllers.TestCases
             return _mapper.Map<List<TestCase>, List<TestCaseResource>>(testCases);
         }
 
+        [HttpGet]
+        [Route("api/test-cases")]
+        public async Task<List<TestCaseResource>> GetIssues([FromQuery]Boolean issuesOnly)
+        {
+
+            var testCases = await _repository.GetIssues();
+            return _mapper.Map<List<TestCase>, List<TestCaseResource>>(testCases);
+        }
+
         [HttpPut]
         [Route("api/test-cases/{testCaseId}")]
         [ValidateModelIdFilter("testCaseId", "testCaseResource")]
@@ -58,6 +67,7 @@ namespace TucanTesting.Controllers.TestCases
 
             var result = _mapper.Map<TestCaseResource, TestCase>(testCaseResource, testCase);
             _repository.Update(result);
+            await _unitOfWork.CompleteAsync();
             return Ok(result);
         }
 
@@ -69,7 +79,7 @@ namespace TucanTesting.Controllers.TestCases
 
             if (testCase == null)
                 return NotFound();
-                
+
             _repository.Remove(testCase);
             await _unitOfWork.CompleteAsync();
 

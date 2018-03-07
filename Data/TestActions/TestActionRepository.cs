@@ -37,7 +37,7 @@ namespace TucanTesting.Data
 
         public void Remove(TestAction testAction)
         {
-            _context.TestActions.Update(testAction);
+            _context.TestActions.Remove(testAction);
         }
     }
 }

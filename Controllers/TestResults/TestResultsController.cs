@@ -44,13 +44,13 @@ namespace TucanTesting.Controllers.TestResults
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateOrInsertTestResult([FromBody] TestResultResource resource)
+        public async Task<IActionResult> UpdateOrInsertTestResult([FromBody] TestResultResource[] resources)
         {
-            var testResult = _mapper.Map<TestResultResource, TestResult>(resource);
-            _repository.UpdateOrInsert(testResult);
+            var testResults = _mapper.Map<TestResultResource[], TestResult[]>(resources);
+            _repository.UpdateOrInsert(testResults);
             await _unitOfWork.CompleteAsync();
 
-            var result = _mapper.Map<TestResult, TestResultResource>(testResult);
+            var result = _mapper.Map<TestResult[], TestResultResource[]>(testResults);
 
             return Ok(result);
         }

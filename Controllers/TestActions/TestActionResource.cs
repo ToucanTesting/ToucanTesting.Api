@@ -10,5 +10,6 @@ namespace TucanTesting.Controllers.TestActions
         [Required]
         [StringLength(255)]
         public string Description { get; set; }
+        public int Sequence { get; set; }
     }
 }

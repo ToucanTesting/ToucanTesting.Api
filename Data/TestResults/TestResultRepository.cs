@@ -31,15 +31,18 @@ namespace TucanTesting.Data
             _context.TestResults.Add(testResult);
         }
 
-        public void UpdateOrInsert(TestResult testResult)
+        public void UpdateOrInsert(TestResult[] testResults)
         {
-            if (testResult.Id == 0)
+            foreach (var testResult in testResults)
             {
-                _context.TestResults.Add(testResult);
-            }
-            else
-            {
-                _context.TestResults.Update(testResult);
+                if (testResult.Id == 0)
+                {
+                    _context.TestResults.Add(testResult);
+                }
+                else
+                {
+                    _context.TestResults.Update(testResult);
+                }
             }
         }
     }

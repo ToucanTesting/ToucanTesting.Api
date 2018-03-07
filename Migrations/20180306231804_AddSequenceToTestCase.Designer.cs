@@ -12,9 +12,10 @@ using TucanTesting.Models;
 namespace TucanTesting.Migrations
 {
     [DbContext(typeof(TucanDbContext))]
-    partial class TucanDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180306231804_AddSequenceToTestCase")]
+    partial class AddSequenceToTestCase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

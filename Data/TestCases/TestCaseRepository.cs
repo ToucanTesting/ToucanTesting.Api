@@ -48,6 +48,13 @@ namespace TucanTesting.Data
             .ToListAsync();
         }
 
+        public async Task<List<TestCase>> GetIssues()
+        {
+            return await _context.TestCases
+            .Where(c => !string.IsNullOrEmpty(c.BugId))
+            .ToListAsync();
+        }
+
         public void Add(TestCase testCase)
         {
             _context.TestCases.Add(testCase);

@@ -9,6 +9,7 @@ namespace TucanTesting.Models
         [Required]
         [StringLength(255)]
         public string Description { get; set; }
+        public int Sequence { get; set; }
         public long TestCaseId { get; set; }
     }
 }

@@ -23,6 +23,7 @@ namespace TucanTesting.Data
         {
             return await _context.TestActions
                 .Where(a => a.TestCaseId == testCaseId)
+                .OrderBy(a => a.Sequence)
                 .ToListAsync();
         }
 

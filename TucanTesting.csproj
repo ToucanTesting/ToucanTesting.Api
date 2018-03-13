@@ -6,12 +6,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
-    <Content Include="TucanTesting.csproj">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Migrations\**">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>

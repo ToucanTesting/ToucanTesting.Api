@@ -9,7 +9,7 @@ using TucanTesting.Data;
 
 namespace TucanTesting.Controllers.TestSuites
 {
-    [Route("/api/test-runs")]
+    [Route("/test-runs")]
     public class TestRunsController : Controller
     {
         private readonly IMapper _mapper;

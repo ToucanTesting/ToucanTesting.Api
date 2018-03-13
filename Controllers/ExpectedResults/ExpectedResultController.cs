@@ -11,7 +11,7 @@ using TucanTesting.Filters;
 
 namespace TucanTesting.Controllers.ExpectedResults
 {
-    [Route("/api/expected-results")]
+    [Route("/expected-results")]
     public class ExpectedResultsController : Controller
     {
         private readonly IMapper _mapper;

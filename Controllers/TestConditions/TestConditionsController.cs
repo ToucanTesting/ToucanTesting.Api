@@ -11,7 +11,7 @@ using TucanTesting.Filters;
 
 namespace TucanTesting.Controllers.TestConditions
 {
-    [Route("/api/test-conditions")]
+    [Route("/test-conditions")]
     public class TestConditionsController : Controller
     {
         private readonly IMapper _mapper;

@@ -10,7 +10,7 @@ using TucanTesting.Filters;
 
 namespace TucanTesting.Controllers.TestSuites
 {
-    [Route("/api/test-suites")]
+    [Route("/test-suites")]
     public class TestSuitesController : Controller
     {
         private readonly IMapper _mapper;

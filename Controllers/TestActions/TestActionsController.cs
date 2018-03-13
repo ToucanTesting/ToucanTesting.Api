@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace TucanTesting.Controllers.TestActions
 {
-    [Route("/api/test-actions")]
+    [Route("/test-actions")]
     [Authorize]
     public class TestActionsController : Controller
     {

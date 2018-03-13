@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace TucanTesting.Controllers.TestResults
 {
-    [Route("/api/test-results")]
+    [Route("/test-results")]
     public class TestResultsController : Controller
     {
         private readonly IMapper _mapper;

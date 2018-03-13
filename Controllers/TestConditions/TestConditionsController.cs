@@ -38,9 +38,10 @@ namespace TucanTesting.Controllers.TestConditions
         }
 
         [HttpGet]
-        public async Task<List<TestConditionResource>> GetTestConditions()
+        [Route("/test-suites/{testSuiteId}/test-modules/{testModuleId}/test-cases/{testCaseId}/test-conditions")]
+        public async Task<List<TestConditionResource>> GetTestConditions(long testCaseId)
         {
-            var testConditions = await _repository.GetAll();
+            var testConditions = await _repository.GetAll(testCaseId);
             return _mapper.Map<List<TestCondition>, List<TestConditionResource>>(testConditions);
         }
 

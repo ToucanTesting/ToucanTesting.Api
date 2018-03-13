@@ -7,7 +7,7 @@ namespace TucanTesting.Data
     public interface IExpectedResultRepository
     {
         Task<ExpectedResult> Get (long id);
-        Task<List<ExpectedResult>> GetAll();
+        Task<List<ExpectedResult>> GetAll(long testCaseId);
         void Add (ExpectedResult expectedResult);
 
         void Update (ExpectedResult expectedResult);

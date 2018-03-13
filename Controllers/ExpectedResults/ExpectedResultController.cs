@@ -38,9 +38,10 @@ namespace TucanTesting.Controllers.ExpectedResults
         }
 
         [HttpGet]
-        public async Task<List<ExpectedResultResource>> GetExpectedResults()
+        [Route("/test-suites/{testSuiteId}/test-modules/{testModuleId}/test-cases/{testCaseId}/expected-results")]
+        public async Task<List<ExpectedResultResource>> GetExpectedResults(long testCaseId)
         {
-            var expectedResults = await _repository.GetAll();
+            var expectedResults = await _repository.GetAll(testCaseId);
             return _mapper.Map<List<ExpectedResult>, List<ExpectedResultResource>>(expectedResults);
         }
 

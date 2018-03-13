@@ -38,8 +38,8 @@ namespace TucanTesting.Data
                 .ToListAsync();
             }
             return await _context.TestCases
-            .Where(c => c.IsEnabled == true && c.TestModuleId == testModuleId)
-            .ToListAsync();
+                .Where(c => c.IsEnabled == true && c.TestModuleId == testModuleId)
+                .ToListAsync();
         }
 
         public async Task<List<TestCase>> GetIssues()

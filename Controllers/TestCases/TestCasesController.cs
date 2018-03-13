@@ -25,7 +25,7 @@ namespace TucanTesting.Controllers.TestCases
         }
 
         [HttpPost]
-        [Route("api/test-cases")]
+        [Route("/test-cases")]
         public async Task<IActionResult> CreateTestCase([FromBody] TestCaseResource resource)
         {
             var testCase = _mapper.Map<TestCaseResource, TestCase>(resource);
@@ -38,7 +38,7 @@ namespace TucanTesting.Controllers.TestCases
         }
 
         [HttpGet]
-        [Route("api/test-suites/{testSuiteId}/test-modules/{testModuleId}/test-cases")]
+        [Route("/test-suites/{testSuiteId}/test-modules/{testModuleId}/test-cases")]
         public async Task<List<TestCaseResource>> GetTestCases(long testModuleId, [FromQuery]DateTime? beforeDate)
         {
 
@@ -47,7 +47,7 @@ namespace TucanTesting.Controllers.TestCases
         }
 
         [HttpGet]
-        [Route("api/test-cases")]
+        [Route("/test-cases")]
         public async Task<List<TestCaseResource>> GetIssues([FromQuery]Boolean issuesOnly)
         {
 
@@ -56,7 +56,7 @@ namespace TucanTesting.Controllers.TestCases
         }
 
         [HttpPut]
-        [Route("api/test-cases/{testCaseId}")]
+        [Route("/test-cases/{testCaseId}")]
         [ValidateModelIdFilter("testCaseId", "testCaseResource")]
         public async Task<IActionResult> UpdateTestCase(long testCaseId, [FromBody] TestCaseResource testCaseResource)
         {
@@ -72,7 +72,7 @@ namespace TucanTesting.Controllers.TestCases
         }
 
         [HttpDelete]
-        [Route("api/test-cases/{testCaseId}")]
+        [Route("/test-cases/{testCaseId}")]
         public async Task<IActionResult> DeleteTestCase(long testCaseId)
         {
             var testCase = await _repository.Get(testCaseId, includeRelated: false);

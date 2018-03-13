@@ -40,9 +40,10 @@ namespace TucanTesting.Controllers.TestActions
         }
 
         [HttpGet]
-        public async Task<List<TestActionResource>> GetTestActions()
+        [Route("/test-suites/{testSuiteId}/test-modules/{testModuleId}/test-cases/{testCaseId}/test-actions")]
+        public async Task<List<TestActionResource>> GetTestActions(long testCaseId)
         {
-            var testActions = await _repository.GetAll();
+            var testActions = await _repository.GetAll(testCaseId);
             return _mapper.Map<List<TestAction>, List<TestActionResource>>(testActions);
         }
 

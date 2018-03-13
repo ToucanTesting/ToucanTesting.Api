@@ -19,9 +19,11 @@ namespace TucanTesting.Data
             return await _context.TestActions.SingleOrDefaultAsync(a => a.Id == id);
         }
 
-        public async Task<List<TestAction>> GetAll()
+        public async Task<List<TestAction>> GetAll(long testCaseId)
         {
-            return await _context.TestActions.ToListAsync();
+            return await _context.TestActions
+            .Where(a => a.TestCaseId == testCaseId)
+            .ToListAsync();
         }
 
         public void Add(TestAction testAction)

@@ -35,16 +35,10 @@ namespace TucanTesting.Data
             {
                 return await _context.TestCases
                 .Where(c => c.CreatedAt < beforeDate && c.TestModuleId == testModuleId)
-                .Include(c => c.TestActions)
-                .Include(c => c.TestConditions)
-                .Include(c => c.ExpectedResults)
                 .ToListAsync();
             }
             return await _context.TestCases
             .Where(c => c.IsEnabled == true && c.TestModuleId == testModuleId)
-            .Include(c => c.TestActions)
-            .Include(c => c.TestConditions)
-            .Include(c => c.ExpectedResults)
             .ToListAsync();
         }
 

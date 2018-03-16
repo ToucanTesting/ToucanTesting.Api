@@ -34,6 +34,11 @@ namespace TucanTesting.Data
             return await _context.TestModules.Where(m => m.CreatedAt < beforeDate && m.TestSuiteId == testSuiteId).ToListAsync();
         }
 
+        public void Update(TestModule testModule)
+        {
+            _context.TestModules.Update(testModule);
+        }
+
         public void Add(TestModule testModule)
         {
             testModule.IsEnabled = true;

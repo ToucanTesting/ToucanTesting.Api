@@ -20,7 +20,7 @@ namespace TucanTesting.Models
         public string BugId { get; set; }
         public long TestModuleId { get; set; }
         public TestModule TestModule { get; set; }
-        public DateTime LastTested { get; set; }
+        public DateTime? LastTested { get; set; }
         public ICollection<TestAction> TestActions { get; set; }
         public ICollection<TestCondition> TestConditions { get; set; }
         public ICollection<ExpectedResult> ExpectedResults { get; set; }

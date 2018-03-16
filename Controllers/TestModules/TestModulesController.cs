@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using TucanTesting.Models;
 using TucanTesting.Data;
 using System.Linq;
+using TucanTesting.Filters;
 
 namespace TucanTesting.Controllers.TestModules
 {
@@ -55,6 +56,20 @@ namespace TucanTesting.Controllers.TestModules
 
             var componentResource = _mapper.Map<TestModule, TestModuleResource>(testModule);
             return Ok(componentResource);
+        }
+
+        [HttpPut("{id}")]
+        [ValidateModelIdFilter("id", "moduleResource")]
+        public async Task<IActionResult> UpdateTestSuite(long id, [FromBody] TestModuleResource moduleResource)
+        {
+            var testModule = await _repository.Get(id);
+
+            if (testModule == null)
+                return NotFound();
+
+            var result = _mapper.Map<TestModuleResource, TestModule>(moduleResource, testModule);
+            await _unitOfWork.CompleteAsync();
+            return Ok(result);
         }
 
         [HttpDelete("{id}")]

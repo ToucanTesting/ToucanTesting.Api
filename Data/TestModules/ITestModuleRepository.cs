@@ -9,6 +9,7 @@ namespace TucanTesting.Data
     {
         Task<TestModule> Get (long testModuleId);
         Task<List<TestModule>> GetAll(long testSuiteId, DateTime? beforeDate);
+        void Update(TestModule testModule);
         void Add (TestModule testModule);
         void Remove (TestModule testModule);
     }

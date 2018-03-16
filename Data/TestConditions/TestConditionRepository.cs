@@ -39,7 +39,7 @@ namespace TucanTesting.Data
 
         public void Remove(TestCondition testCondition)
         {
-            _context.TestConditions.Update(testCondition);
+            _context.TestConditions.Remove(testCondition);
         }
     }
 }

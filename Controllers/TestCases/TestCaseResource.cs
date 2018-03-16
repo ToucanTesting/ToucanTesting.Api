@@ -20,7 +20,7 @@ namespace TucanTesting.Controllers.TestCases
         public bool IsEnabled { get; set; }
         public string BugId { get; set; }
         public long TestModuleId { get; set; }
-        public DateTime LastTested { get; set; }
+        public DateTime? LastTested { get; set; }
         public ICollection<TestActionResource> TestActions { get; set; }
         public ICollection<TestCondition> TestConditions { get; set; }
         public ICollection<ExpectedResult> ExpectedResults { get; set; }

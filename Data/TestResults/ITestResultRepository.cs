@@ -10,6 +10,6 @@ namespace TucanTesting.Data
         Task<TestResult> Get (long id);
         Task<List<TestResult>> GetAll(long testRunId);
         void Add (TestResult testResult);
-        void UpdateOrInsert(TestResult[] testResults);
+        void UpdateOrInsert(TestResult testResult);
     }
 }

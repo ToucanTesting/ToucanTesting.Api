@@ -12,5 +12,10 @@ namespace TucanTesting.Models
         public string Name { get; set; }
         public long TestSuiteId { get; set; }
         public TestSuite TestSuite { get; set; }
+        public ICollection<TestResult> TestResults { get; set; }
+        public TestRun()
+        {
+            TestResults = new Collection<TestResult>();
+        }
     }
 }

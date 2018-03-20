@@ -21,6 +21,7 @@ namespace TucanTesting.Data
             {
                 return await _context.TestRuns
                 .Include(r => r.TestSuite)
+                .Include(r => r.TestResults)
                 .SingleOrDefaultAsync(r => r.Id == id);
             }
             return await _context.TestRuns.SingleOrDefaultAsync(r => r.Id == id);

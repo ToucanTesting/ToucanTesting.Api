@@ -31,16 +31,9 @@ namespace TucanTesting.Data
             _context.TestResults.Add(testResult);
         }
 
-        public void UpdateOrInsert(TestResult testResult)
+        public void Update(TestResult testResult)
         {
-            if (testResult.Id == 0)
-            {
-                _context.TestResults.Add(testResult);
-            }
-            else
-            {
                 _context.TestResults.Update(testResult);
-            }
         }
     }
 }

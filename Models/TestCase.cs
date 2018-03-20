@@ -30,6 +30,5 @@ namespace TucanTesting.Models
             TestConditions = new Collection<TestCondition>();
             ExpectedResults = new Collection<ExpectedResult>();
         }
-
     }
 }

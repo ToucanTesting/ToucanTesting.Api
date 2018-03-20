@@ -6,6 +6,8 @@ namespace TucanTesting.Models
         public long Id { get; set; }
         public TestResultStatus Status { get; set; }
         public long TestRunId { get; set; }
+        public TestRun TestRun { get; set; }
+        public long TestModuleId { get; set; }
         public long TestCaseId { get; set; }
     }
 }

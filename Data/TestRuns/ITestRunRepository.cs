@@ -7,7 +7,7 @@ namespace TucanTesting.Data
 {
     public interface ITestRunRepository
     {
-        Task<TestRun> Get(long testRunId, bool includeRelated = true);
+        Task<TestRun> Get(long testRunId, bool includeRelated);
         Task<List<TestRun>> GetAll();
         void Add(TestRun testRun);
         void Update(TestRun testRun);

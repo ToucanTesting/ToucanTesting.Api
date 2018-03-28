@@ -15,7 +15,7 @@ namespace TucanTesting.Data
             this._context = context;
 
         }
-        public async Task<TestRun> Get(long id, bool includeRelated = true)
+        public async Task<TestRun> Get(long id, bool includeRelated)
         {
             if (includeRelated)
             {
@@ -24,7 +24,9 @@ namespace TucanTesting.Data
                 .Include(r => r.TestResults)
                 .SingleOrDefaultAsync(r => r.Id == id);
             }
-            return await _context.TestRuns.SingleOrDefaultAsync(r => r.Id == id);
+            return await _context.TestRuns
+            .Include(r => r.TestSuite)
+            .SingleOrDefaultAsync(r => r.Id == id);
         }
 
         public async Task<List<TestRun>> GetAll()

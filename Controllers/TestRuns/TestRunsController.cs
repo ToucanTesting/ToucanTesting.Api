@@ -27,14 +27,14 @@ namespace TucanTesting.Controllers.TestSuites
         public async Task<List<TestRunResource>> GetTestRuns()
         {
             var testRuns = await _repository.GetAll();
-            
+
             return _mapper.Map<List<TestRun>, List<TestRunResource>>(testRuns);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetTestRun(long id)
+        public async Task<IActionResult> GetTestRun(long id, [FromQuery]bool results = false)
         {
-            var testRun = await _repository.Get(id);
+            var testRun = await _repository.Get(id, results);
 
             if (testRun == null)
             {

@@ -38,9 +38,9 @@ namespace TucanTesting.Controllers.TestModules
         }
 
         [HttpGet]
-        public async Task<List<TestModuleResource>> GetTestModules(long testSuiteId, [FromQuery]DateTime? beforeDate)
+        public async Task<List<TestModuleResource>> GetTestModules(long testSuiteId, [FromQuery]DateTime? beforeDate, [FromQuery]bool? isReport)
         {
-            var testModules = await _repository.GetAll(testSuiteId, beforeDate);
+            var testModules = await _repository.GetAll(testSuiteId, beforeDate, isReport);
             return _mapper.Map<List<TestModule>, List<TestModuleResource>>(testModules);
         }
 

@@ -14,6 +14,12 @@ namespace TucanTesting.Controllers.TestModules
         [StringLength(255)]
         public string Name { get; set; }
         public bool IsEnabled { get; set; }
-        
+
+        public ICollection<TestCaseResource> TestCases { get; set; }
+        public TestModuleResource()
+        {
+            TestCases = new Collection<TestCaseResource>();
+        }
+
     }
 }

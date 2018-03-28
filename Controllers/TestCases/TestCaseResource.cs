@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using TucanTesting.Controllers.ExpectedResults;
 using TucanTesting.Controllers.TestActions;
+using TucanTesting.Controllers.TestConditions;
 using TucanTesting.Models;
 
 namespace TucanTesting.Controllers.TestCases
@@ -22,14 +24,14 @@ namespace TucanTesting.Controllers.TestCases
         public long TestModuleId { get; set; }
         public DateTime? LastTested { get; set; }
         public ICollection<TestActionResource> TestActions { get; set; }
-        public ICollection<TestCondition> TestConditions { get; set; }
-        public ICollection<ExpectedResult> ExpectedResults { get; set; }
+        public ICollection<TestConditionResource> TestConditions { get; set; }
+        public ICollection<ExpectedResultResource> ExpectedResults { get; set; }
 
         public TestCaseResource()
         {
             TestActions = new Collection<TestActionResource>();
-            TestConditions = new Collection<TestCondition>();
-            ExpectedResults = new Collection<ExpectedResult>();
+            TestConditions = new Collection<TestConditionResource>();
+            ExpectedResults = new Collection<ExpectedResultResource>();
         }
 
     }

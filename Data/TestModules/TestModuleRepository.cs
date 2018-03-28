@@ -20,20 +20,41 @@ namespace TucanTesting.Data
             return await _context.TestModules.SingleOrDefaultAsync(s => s.Id == testModuleId);
         }
 
-        public async Task<List<TestModule>> GetAll(long testSuiteId)
+        public async Task<List<TestModule>> GetAll(long testSuiteId, DateTime? beforeDate, bool? isReport)
         {
-            return await _context.TestModules.Where(m => m.IsEnabled && m.TestSuiteId == testSuiteId).ToListAsync();
-        }
-
-        public async Task<List<TestModule>> GetAll(long testSuiteId, DateTime? beforeDate)
-        {
-            if (!beforeDate.HasValue)
+            if (isReport.HasValue)
             {
-                return await _context.TestModules.Where(m => m.IsEnabled && m.TestSuiteId == testSuiteId).ToListAsync();
+                return await _context.TestModules
+                    .Include(tm => tm.TestCases)
+                    .Where(m => m.CreatedAt < beforeDate && m.TestSuiteId == testSuiteId)
+                    .Select(tm => new TestModule()
+                    {
+                        Id = tm.Id,
+                        CreatedAt = tm.CreatedAt,
+                        UpdatedAt = tm.UpdatedAt,
+                        TestSuiteId = tm.TestSuiteId,
+                        Name = tm.Name,
+                        TestCases = tm.TestCases.Where(tc => tc.IsEnabled).ToArray()
+                    })
+                    .ToListAsync();
             }
-            return await _context.TestModules.Where(m => m.CreatedAt < beforeDate && m.TestSuiteId == testSuiteId).ToListAsync();
-        }
+            
+            else if (beforeDate.HasValue)
+            {
+                return await _context.TestModules
+                    .Where(m => m.CreatedAt < beforeDate && m.TestSuiteId == testSuiteId)
+                    .ToListAsync();
+            }
 
+            else
+            {
+                return await _context.TestModules
+                    .Where(m => m.IsEnabled && m.TestSuiteId == testSuiteId)
+                    .ToListAsync();
+            }
+
+        }
+        
         public void Update(TestModule testModule)
         {
             _context.TestModules.Update(testModule);

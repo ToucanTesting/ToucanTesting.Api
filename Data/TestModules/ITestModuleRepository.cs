@@ -8,7 +8,7 @@ namespace TucanTesting.Data
     public interface ITestModuleRepository
     {
         Task<TestModule> Get (long testModuleId);
-        Task<List<TestModule>> GetAll(long testSuiteId, DateTime? beforeDate);
+        Task<List<TestModule>> GetAll(long testSuiteId, DateTime? beforeDate, bool? isReport);
         void Update(TestModule testModule);
         void Add (TestModule testModule);
         void Remove (TestModule testModule);

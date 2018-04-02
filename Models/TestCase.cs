@@ -11,16 +11,19 @@ namespace TucanTesting.Models
         public long Id { get; set; }
         [Required]
         [StringLength(255)]
+        [MinLength(3)]
         public string Description { get; set; }
+        [Required]
         public Priority Priority { get; set; }
         [Required]
         public bool IsAutomated { get; set; }
         [Required]
         public bool IsEnabled { get; set; }
         public string BugId { get; set; }
+        public DateTime? LastTested { get; set; }
+        [Required]
         public long TestModuleId { get; set; }
         public TestModule TestModule { get; set; }
-        public DateTime? LastTested { get; set; }
         public ICollection<TestAction> TestActions { get; set; }
         public ICollection<TestCondition> TestConditions { get; set; }
         public ICollection<ExpectedResult> ExpectedResults { get; set; }

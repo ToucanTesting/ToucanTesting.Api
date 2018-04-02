@@ -9,7 +9,9 @@ namespace TucanTesting.Models
         public long Id { get; set; }
         [Required]
         [StringLength(255)]
+        [MinLength(3)]
         public string Name { get; set; }
+        [Required]
         public bool IsEnabled { get; set; }
         public ICollection<TestModule> TestModules { get; set; }
         public TestSuite()

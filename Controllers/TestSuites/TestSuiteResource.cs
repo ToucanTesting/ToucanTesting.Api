@@ -11,7 +11,9 @@ namespace TucanTesting.Controllers.TestSuites
         public long Id { get; set; }
         [Required]
         [StringLength(255)]
+        [MinLength(3)]
         public string Name { get; set; }
+        [Required]
         public bool IsEnabled { get; set; }
     }
 }

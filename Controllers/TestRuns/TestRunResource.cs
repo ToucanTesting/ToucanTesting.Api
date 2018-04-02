@@ -13,7 +13,9 @@ namespace TucanTesting.Controllers.TestSuites
         public long Id { get; set; }
         [Required]
         [StringLength(255)]
+        [MinLength(3)]
         public string Name { get; set; }
+        [Required]
         public long TestSuiteId { get; set; }
         public TestSuite TestSuite { get; set; }
 

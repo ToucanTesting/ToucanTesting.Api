@@ -14,15 +14,18 @@ namespace TucanTesting.Controllers.TestCases
         public long Id { get; set; }
         [Required]
         [StringLength(255)]
+        [MinLength(3)]
         public string Description { get; set; }
+        [Required]
         public Priority Priority { get; set; }
         [Required]
         public bool IsAutomated { get; set; }
         [Required]
         public bool IsEnabled { get; set; }
         public string BugId { get; set; }
-        public long TestModuleId { get; set; }
         public DateTime? LastTested { get; set; }
+        [Required]
+        public long TestModuleId { get; set; }
         public ICollection<TestActionResource> TestActions { get; set; }
         public ICollection<TestConditionResource> TestConditions { get; set; }
         public ICollection<ExpectedResultResource> ExpectedResults { get; set; }

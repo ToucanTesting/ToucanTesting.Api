@@ -1,13 +1,18 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace TucanTesting.Models
 {
     public enum TestResultStatus { Pass, Fail, CNT, NA, Pending }
     public class TestResult : BaseEntity
     {
         public long Id { get; set; }
-        public TestResultStatus Status { get; set; }
+        [Required]
         public long TestRunId { get; set; }
-        public TestRun TestRun { get; set; }
+        [Required]
         public long TestModuleId { get; set; }
+        [Required]
         public long TestCaseId { get; set; }
+        [Required]
+        public TestResultStatus Status { get; set; }
     }
 }

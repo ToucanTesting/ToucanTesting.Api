@@ -26,7 +26,7 @@ namespace TucanTesting.Data
             {
                 return await _context.TestModules
                     .Include(tm => tm.TestCases)
-                    .Where(m => m.CreatedAt < beforeDate && m.TestSuiteId == testSuiteId)
+                    .Where(m => m.IsEnabled && m.CreatedAt < beforeDate && m.TestSuiteId == testSuiteId)
                     .Select(tm => new TestModule()
                     {
                         Id = tm.Id,

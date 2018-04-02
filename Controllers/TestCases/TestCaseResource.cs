@@ -22,6 +22,8 @@ namespace TucanTesting.Controllers.TestCases
         public bool IsAutomated { get; set; }
         [Required]
         public bool IsEnabled { get; set; }
+        [MinLength(3)]
+        [MaxLength(255)]
         public string BugId { get; set; }
         public DateTime? LastTested { get; set; }
         [Required]

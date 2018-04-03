@@ -63,6 +63,7 @@ namespace TucanTesting
             services.AddScoped<ITestActionRepository, TestActionRepository>();
             services.AddScoped<ITestConditionRepository, TestConditionRepository>();
             services.AddScoped<IExpectedResultRepository, ExpectedResultRepository>();
+            services.AddScoped<ITestIssueRepository, TestIssueRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAutoMapper();
             services.AddDbContext<TucanDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));

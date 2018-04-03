@@ -51,5 +51,6 @@ namespace TucanTesting.Data
         public DbSet<TestCondition> TestConditions { get; set; }
         public DbSet<TestAction> TestActions { get; set; }
         public DbSet<ExpectedResult> ExpectedResults { get; set; }
+        public DbSet<TestIssue> TestIssues { get; set; }
     }
 }

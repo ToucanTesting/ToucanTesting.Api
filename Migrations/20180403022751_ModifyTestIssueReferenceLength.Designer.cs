@@ -12,9 +12,10 @@ using TucanTesting.Models;
 namespace TucanTesting.Migrations
 {
     [DbContext(typeof(TucanDbContext))]
-    partial class TucanDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180403022751_ModifyTestIssueReferenceLength")]
+    partial class ModifyTestIssueReferenceLength
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -269,7 +270,7 @@ namespace TucanTesting.Migrations
 
             modelBuilder.Entity("TucanTesting.Models.TestIssue", b =>
                 {
-                    b.HasOne("TucanTesting.Models.TestCase", "TestCase")
+                    b.HasOne("TucanTesting.Models.TestCase")
                         .WithMany("TestIssues")
                         .HasForeignKey("TestCaseId")
                         .OnDelete(DeleteBehavior.Cascade);

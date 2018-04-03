@@ -23,6 +23,7 @@ namespace TucanTesting.Data
                 .Include(c => c.TestActions)
                 .Include(c => c.TestConditions)
                 .Include(c => c.ExpectedResults)
+                .Include(c => c.TestIssues)
                 .SingleOrDefaultAsync(c => c.Id == id);
             }
             return await _context.TestCases
@@ -35,23 +36,74 @@ namespace TucanTesting.Data
             {
                 return await _context.TestCases
                 .Where(c => c.CreatedAt < beforeDate && c.TestModuleId == testModuleId)
+                .Include(c => c.TestIssues)
                 .ToListAsync();
             }
             return await _context.TestCases
                 .Where(c => c.IsEnabled == true && c.TestModuleId == testModuleId)
+                .Include(c => c.TestIssues)
                 .ToListAsync();
-        }
-
-        public async Task<List<TestCase>> GetIssues()
-        {
-            return await _context.TestCases
-            .Where(c => !string.IsNullOrEmpty(c.BugId))
-            .ToListAsync();
         }
 
         public void Add(TestCase testCase)
         {
             _context.TestCases.Add(testCase);
+        }
+
+        public async Task<TestCase> Duplicate(long testCaseId)
+        {
+            var testCase = await _context.TestCases
+            .AsNoTracking()
+            .Include(c => c.TestActions)
+            .Include(c => c.TestConditions)
+            .Include(c => c.ExpectedResults)
+            .FirstOrDefaultAsync(c => c.Id == testCaseId);
+
+            var cloneTestCase = new TestCase()
+            {
+                Description = $"{testCase.Description} (copy)",
+                Priority = testCase.Priority,
+                TestModuleId = testCase.TestModuleId,
+                IsEnabled = testCase.IsEnabled,
+                IsAutomated = testCase.IsAutomated,
+                LastTested = null,
+                TestActions = new List<TestAction>(),
+                TestConditions = new List<TestCondition>(),
+                ExpectedResults = new List<ExpectedResult>()
+            };
+
+            foreach (var testAction in testCase.TestActions)
+            {
+                var cloneTestAction = new TestAction()
+                {
+                    Description = testAction.Description,
+                    Sequence = testAction.Sequence
+                };
+
+                cloneTestCase.TestActions.Add(cloneTestAction);
+            }
+
+            foreach (var testCondition in testCase.TestConditions)
+            {
+                var cloneTestCondition = new TestCondition()
+                {
+                    Description = testCondition.Description
+                };
+
+                cloneTestCase.TestConditions.Add(cloneTestCondition);
+            }
+
+            foreach (var expectedResult in testCase.ExpectedResults)
+            {
+                var cloneExpectedResult = new ExpectedResult()
+                {
+                    Description = expectedResult.Description
+                };
+
+                cloneTestCase.ExpectedResults.Add(cloneExpectedResult);
+            }
+
+            return cloneTestCase;
         }
 
         public void Update(TestCase testCase)

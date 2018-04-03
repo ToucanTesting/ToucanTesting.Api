@@ -19,9 +19,6 @@ namespace TucanTesting.Models
         public bool IsAutomated { get; set; }
         [Required]
         public bool IsEnabled { get; set; }
-        [MinLength(3)]
-        [MaxLength(255)]
-        public string BugId { get; set; }
         public DateTime? LastTested { get; set; }
         [Required]
         public long TestModuleId { get; set; }
@@ -29,11 +26,13 @@ namespace TucanTesting.Models
         public ICollection<TestAction> TestActions { get; set; }
         public ICollection<TestCondition> TestConditions { get; set; }
         public ICollection<ExpectedResult> ExpectedResults { get; set; }
+        public ICollection<TestIssue> TestIssues { get; set; }
         public TestCase()
         {
             TestActions = new Collection<TestAction>();
             TestConditions = new Collection<TestCondition>();
             ExpectedResults = new Collection<ExpectedResult>();
+            TestIssues = new Collection<TestIssue>();
         }
     }
 }

@@ -7,6 +7,7 @@ using TucanTesting.Controllers.TestConditions;
 using TucanTesting.Controllers.TestResults;
 using TucanTesting.Models;
 using TucanTesting.Controllers.ExpectedResults;
+using TucanTesting.Api.Controllers.TestIssues;
 
 namespace TucanTesting.Mapping
 {
@@ -32,6 +33,8 @@ namespace TucanTesting.Mapping
             CreateMap<TestConditionResource, TestCondition>();
             CreateMap<TestResult, TestResultResource>();
             CreateMap<TestResultResource, TestResult>();
+            CreateMap<TestIssue, TestIssueResource>();
+            CreateMap<TestIssueResource, TestIssue>();
 
         }
     }

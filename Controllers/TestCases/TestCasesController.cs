@@ -37,21 +37,25 @@ namespace TucanTesting.Controllers.TestCases
             return Ok(result);
         }
 
+        [HttpPost]
+        [Route("/test-cases/{testCaseId}")]
+        public async Task<IActionResult> DuplicateTestCase(long testCaseId)
+        {
+            var testCase = await _repository.Duplicate(testCaseId);
+            _repository.Add(testCase);
+            await _unitOfWork.CompleteAsync();
+
+            var result = _mapper.Map<TestCase, TestCaseResource>(testCase);
+
+            return Ok(result);
+        }
+
         [HttpGet]
         [Route("/test-suites/{testSuiteId}/test-modules/{testModuleId}/test-cases")]
         public async Task<List<TestCaseResource>> GetTestCases(long testModuleId, [FromQuery]DateTime? beforeDate)
         {
 
             var testCases = await _repository.GetAll(testModuleId, beforeDate);
-            return _mapper.Map<List<TestCase>, List<TestCaseResource>>(testCases);
-        }
-
-        [HttpGet]
-        [Route("/test-cases")]
-        public async Task<List<TestCaseResource>> GetIssues([FromQuery]Boolean issuesOnly)
-        {
-
-            var testCases = await _repository.GetIssues();
             return _mapper.Map<List<TestCase>, List<TestCaseResource>>(testCases);
         }
 

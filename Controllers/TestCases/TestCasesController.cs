@@ -8,6 +8,7 @@ using TucanTesting.Models;
 using TucanTesting.Data;
 using System.Linq;
 using TucanTesting.Filters;
+using TucanTesting.Api.Controllers.TestIssues;
 
 namespace TucanTesting.Controllers.TestCases
 {
@@ -57,6 +58,14 @@ namespace TucanTesting.Controllers.TestCases
 
             var testCases = await _repository.GetAll(testModuleId, beforeDate);
             return _mapper.Map<List<TestCase>, List<TestCaseResource>>(testCases);
+        }
+
+        [HttpGet]
+        [Route("/test-cases/{testCaseId}/test-issues/")]
+        public async Task<List<TestIssueResource>> GetTestCases(long testCaseId)
+        {
+            var testIssues = await _repository.GetIssues(testCaseId);
+            return _mapper.Map<List<TestIssue>, List<TestIssueResource>>(testIssues);
         }
 
         [HttpPut]

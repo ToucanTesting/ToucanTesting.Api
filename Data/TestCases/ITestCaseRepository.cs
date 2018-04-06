@@ -9,6 +9,7 @@ namespace TucanTesting.Data
     {
         Task<TestCase> Get (long id, bool includeRelated = true);
         Task<List<TestCase>> GetAll(long testModuleId, DateTime? beforeDate);
+        Task<List<TestIssue>> GetIssues(long testCaseId);
         void Add (TestCase testCase);
         Task<TestCase> Duplicate (long testCaseId);
         void Update (TestCase testCase);

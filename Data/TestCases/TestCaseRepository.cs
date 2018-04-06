@@ -45,6 +45,11 @@ namespace TucanTesting.Data
                 .ToListAsync();
         }
 
+        public async Task<List<TestIssue>> GetIssues(long testCaseId)
+        {
+            return await _context.TestIssues.Where(ti => ti.TestCaseId == testCaseId).ToListAsync();
+        }
+
         public void Add(TestCase testCase)
         {
             _context.TestCases.Add(testCase);

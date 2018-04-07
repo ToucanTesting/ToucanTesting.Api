@@ -11,5 +11,6 @@ namespace TucanTesting.Data
         Task<List<TestResult>> GetAll(long testRunId);
         void Add (TestResult testResult);
         void Update(TestResult testResult);
+        void UpdateTestRun(long testRunId);
     }
 }

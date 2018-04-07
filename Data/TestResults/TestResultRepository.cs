@@ -29,11 +29,20 @@ namespace TucanTesting.Data
         public void Add(TestResult testResult)
         {
             _context.TestResults.Add(testResult);
+            UpdateTestRun(testResult.TestRunId);
         }
 
         public void Update(TestResult testResult)
         {
-                _context.TestResults.Update(testResult);
+            _context.TestResults.Update(testResult);
+            UpdateTestRun(testResult.TestRunId);
+        }
+
+        public async void UpdateTestRun(long testRunId)
+        {
+            var testRun = await _context.TestRuns.Where(tr => tr.Id == testRunId).SingleOrDefaultAsync();
+            testRun.UpdatedAt = DateTime.UtcNow;
+            _context.TestRuns.Update(testRun);
         }
     }
 }

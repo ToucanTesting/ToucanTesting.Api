@@ -12,11 +12,18 @@ namespace TucanTesting.Api.Controllers.TestIssues
         [Required]
         [StringLength(16)]
         [MinLength(3)]
+
         public string Reference { get; set; }
 
         [Required]
         [StringLength(255)]
         [MinLength(3)]
         public string Description { get; set; }
+
+        public string TestRunName { get; set; }
+
+        public string TestModuleName { get; set; }
+
+        public string TestCaseDescription { get; set; }
     }
 }

@@ -87,7 +87,7 @@ namespace TucanTesting
             app.UseStaticFiles();
             app.UseAuthentication();
 
-            if (env.IsDevelopment())
+            if (env.IsDevelopment() || env.IsEnvironment("Ubuntu"))
             {
                 app.UseDeveloperExceptionPage();
             }

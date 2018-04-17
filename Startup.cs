@@ -75,8 +75,8 @@ namespace ToucanTesting
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
             {
-                options.Authority = "https://tucantesting.auth0.com/";
-                options.Audience = "https://api.tucantesting.com";
+                options.Authority = "https://toucantesting.auth0.com/";
+                options.Audience = "https://api.toucantesting.com";
             });
         }
 

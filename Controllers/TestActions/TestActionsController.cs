@@ -4,13 +4,13 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using TucanTesting.Models;
-using TucanTesting.Data;
+using ToucanTesting.Models;
+using ToucanTesting.Data;
 using System.Linq;
-using TucanTesting.Filters;
+using ToucanTesting.Filters;
 using Microsoft.AspNetCore.Authorization;
 
-namespace TucanTesting.Controllers.TestActions
+namespace ToucanTesting.Controllers.TestActions
 {
     [Route("/test-actions")]
     [Authorize]

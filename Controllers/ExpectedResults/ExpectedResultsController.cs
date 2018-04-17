@@ -4,12 +4,12 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using TucanTesting.Models;
-using TucanTesting.Data;
+using ToucanTesting.Models;
+using ToucanTesting.Data;
 using System.Linq;
-using TucanTesting.Filters;
+using ToucanTesting.Filters;
 
-namespace TucanTesting.Controllers.ExpectedResults
+namespace ToucanTesting.Controllers.ExpectedResults
 {
     [Route("/expected-results")]
     public class ExpectedResultsController : Controller

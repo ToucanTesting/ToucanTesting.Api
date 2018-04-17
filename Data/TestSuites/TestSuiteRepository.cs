@@ -1,12 +1,12 @@
-using TucanTesting.Models;
-using TucanTesting.Data;
+using ToucanTesting.Models;
+using ToucanTesting.Data;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using TucanTesting.Controllers.TestSuites;
+using ToucanTesting.Controllers.TestSuites;
 using System.Linq;
 
-namespace TucanTesting.Data
+namespace ToucanTesting.Data
 {
     public class TestSuiteRepository : ITestSuiteRepository
     {

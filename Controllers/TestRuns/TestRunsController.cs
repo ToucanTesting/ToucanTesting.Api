@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using TucanTesting.Models;
-using TucanTesting.Data;
+using ToucanTesting.Models;
+using ToucanTesting.Data;
 
-namespace TucanTesting.Controllers.TestSuites
+namespace ToucanTesting.Controllers.TestSuites
 {
     [Route("/test-runs")]
     public class TestRunsController : Controller

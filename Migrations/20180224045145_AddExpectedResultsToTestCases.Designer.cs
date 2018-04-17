@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
-using TucanTesting.Data;
-using TucanTesting.Models;
+using ToucanTesting.Data;
+using ToucanTesting.Models;
 
-namespace TucanTesting.Migrations
+namespace ToucanTesting.Migrations
 {
     [DbContext(typeof(TucanDbContext))]
     [Migration("20180224045145_AddExpectedResultsToTestCases")]

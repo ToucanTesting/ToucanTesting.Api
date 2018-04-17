@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using TucanTesting.Controllers.TestCases;
+using ToucanTesting.Controllers.TestCases;
 
-namespace TucanTesting.Api.Controllers.TestIssues
+namespace ToucanTesting.Api.Controllers.TestIssues
 {
     public class TestIssueResource
     {

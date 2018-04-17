@@ -2,9 +2,9 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using TucanTesting.Models;
+using ToucanTesting.Models;
 
-namespace TucanTesting.Data
+namespace ToucanTesting.Data
 {
     public class TucanDbContext : DbContext
     {

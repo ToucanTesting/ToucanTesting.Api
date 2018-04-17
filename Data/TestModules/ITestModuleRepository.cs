@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TucanTesting.Models;
+using ToucanTesting.Models;
 
-namespace TucanTesting.Data
+namespace ToucanTesting.Data
 {
     public interface ITestModuleRepository
     {

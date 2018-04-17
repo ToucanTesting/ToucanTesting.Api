@@ -1,15 +1,15 @@
 using AutoMapper;
-using TucanTesting.Controllers.TestModules;
-using TucanTesting.Controllers.TestSuites;
-using TucanTesting.Controllers.TestCases;
-using TucanTesting.Controllers.TestActions;
-using TucanTesting.Controllers.TestConditions;
-using TucanTesting.Controllers.TestResults;
-using TucanTesting.Models;
-using TucanTesting.Controllers.ExpectedResults;
-using TucanTesting.Api.Controllers.TestIssues;
+using ToucanTesting.Controllers.TestModules;
+using ToucanTesting.Controllers.TestSuites;
+using ToucanTesting.Controllers.TestCases;
+using ToucanTesting.Controllers.TestActions;
+using ToucanTesting.Controllers.TestConditions;
+using ToucanTesting.Controllers.TestResults;
+using ToucanTesting.Models;
+using ToucanTesting.Controllers.ExpectedResults;
+using ToucanTesting.Api.Controllers.TestIssues;
 
-namespace TucanTesting.Mapping
+namespace ToucanTesting.Mapping
 {
     public class MappingProfile : Profile
     {

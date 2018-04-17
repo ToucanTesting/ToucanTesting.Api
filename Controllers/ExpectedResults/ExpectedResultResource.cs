@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using TucanTesting.Models;
+using ToucanTesting.Models;
 
-namespace TucanTesting.Controllers.ExpectedResults
+namespace ToucanTesting.Controllers.ExpectedResults
 {
     public class ExpectedResultResource
     {

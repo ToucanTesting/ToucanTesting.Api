@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace TucanTesting.Data
+namespace ToucanTesting.Data
 {
     public class UnitOfWork : IUnitOfWork
     {

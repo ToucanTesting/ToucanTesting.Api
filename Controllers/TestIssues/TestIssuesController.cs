@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using TucanTesting.Data;
-using TucanTesting.Models;
+using ToucanTesting.Data;
+using ToucanTesting.Models;
 
-namespace TucanTesting.Api.Controllers.TestIssues
+namespace ToucanTesting.Api.Controllers.TestIssues
 {
     [Route("/test-issues")]
     public class TestIssuesController : Controller

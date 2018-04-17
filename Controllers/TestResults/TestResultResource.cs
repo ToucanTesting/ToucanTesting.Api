@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using TucanTesting.Models;
+using ToucanTesting.Models;
 
-namespace TucanTesting.Controllers.TestResults
+namespace ToucanTesting.Controllers.TestResults
 {
     public class TestResultResource
     {

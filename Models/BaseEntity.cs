@@ -1,6 +1,6 @@
 using System;
 
-namespace TucanTesting.Models
+namespace ToucanTesting.Models
 {
     public class BaseEntity
     {

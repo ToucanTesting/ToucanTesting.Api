@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace TucanTesting.Models
+namespace ToucanTesting.Models
 {
     public class TestAction : BaseEntity
     {

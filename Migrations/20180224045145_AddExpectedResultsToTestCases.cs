@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace TucanTesting.Migrations
+namespace ToucanTesting.Migrations
 {
     public partial class AddExpectedResultsToTestCases : Migration
     {

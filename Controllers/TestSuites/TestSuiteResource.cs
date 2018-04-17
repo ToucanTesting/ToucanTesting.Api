@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
-using TucanTesting.Controllers.TestModules;
-using TucanTesting.Models;
+using ToucanTesting.Controllers.TestModules;
+using ToucanTesting.Models;
 
-namespace TucanTesting.Controllers.TestSuites
+namespace ToucanTesting.Controllers.TestSuites
 {
     public class TestSuiteResource
     {

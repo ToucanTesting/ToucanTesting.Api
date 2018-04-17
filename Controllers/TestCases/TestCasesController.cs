@@ -4,13 +4,13 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using TucanTesting.Models;
-using TucanTesting.Data;
+using ToucanTesting.Models;
+using ToucanTesting.Data;
 using System.Linq;
-using TucanTesting.Filters;
-using TucanTesting.Api.Controllers.TestIssues;
+using ToucanTesting.Filters;
+using ToucanTesting.Api.Controllers.TestIssues;
 
-namespace TucanTesting.Controllers.TestCases
+namespace ToucanTesting.Controllers.TestCases
 {
     public class TestCasesController : Controller
     {

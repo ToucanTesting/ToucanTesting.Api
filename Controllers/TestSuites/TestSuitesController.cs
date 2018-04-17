@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using TucanTesting.Models;
-using TucanTesting.Data;
-using TucanTesting.Filters;
+using ToucanTesting.Models;
+using ToucanTesting.Data;
+using ToucanTesting.Filters;
 
-namespace TucanTesting.Controllers.TestSuites
+namespace ToucanTesting.Controllers.TestSuites
 {
     [Route("/test-suites")]
     public class TestSuitesController : Controller

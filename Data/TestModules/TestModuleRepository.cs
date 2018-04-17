@@ -1,11 +1,11 @@
-using TucanTesting.Models;
+using ToucanTesting.Models;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System;
 
-namespace TucanTesting.Data
+namespace ToucanTesting.Data
 {
     public class TestModuleRepository : ITestModuleRepository
     {

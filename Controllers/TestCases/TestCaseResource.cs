@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
-using TucanTesting.Api.Controllers.TestIssues;
-using TucanTesting.Controllers.ExpectedResults;
-using TucanTesting.Controllers.TestActions;
-using TucanTesting.Controllers.TestConditions;
-using TucanTesting.Models;
+using ToucanTesting.Api.Controllers.TestIssues;
+using ToucanTesting.Controllers.ExpectedResults;
+using ToucanTesting.Controllers.TestActions;
+using ToucanTesting.Controllers.TestConditions;
+using ToucanTesting.Models;
 
-namespace TucanTesting.Controllers.TestCases
+namespace ToucanTesting.Controllers.TestCases
 {
     public class TestCaseResource
     {

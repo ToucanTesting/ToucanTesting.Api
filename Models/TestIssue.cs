@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace TucanTesting.Models
+namespace ToucanTesting.Models
 {
     public class TestIssue : BaseEntity
     {

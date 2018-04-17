@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace TucanTesting.Models
+namespace ToucanTesting.Models
 {
     public enum TestResultStatus { Pass, Fail, CNT, NA, Pending }
     public class TestResult : BaseEntity

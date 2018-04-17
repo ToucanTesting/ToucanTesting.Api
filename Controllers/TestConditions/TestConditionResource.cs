@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using TucanTesting.Models;
+using ToucanTesting.Models;
 
-namespace TucanTesting.Controllers.TestConditions
+namespace ToucanTesting.Controllers.TestConditions
 {
     public class TestConditionResource
     {

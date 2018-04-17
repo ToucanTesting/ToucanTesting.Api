@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 
-namespace TucanTesting.Migrations
+namespace ToucanTesting.Migrations
 {
     public partial class Initial : Migration
     {

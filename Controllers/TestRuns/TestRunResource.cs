@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
-using TucanTesting.Controllers.TestModules;
-using TucanTesting.Controllers.TestResults;
-using TucanTesting.Models;
+using ToucanTesting.Controllers.TestModules;
+using ToucanTesting.Controllers.TestResults;
+using ToucanTesting.Models;
 
-namespace TucanTesting.Controllers.TestSuites
+namespace ToucanTesting.Controllers.TestSuites
 {
     public class TestRunResource
     {

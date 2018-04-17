@@ -16,10 +16,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using TucanTesting.Data;
-using TucanTesting.Filters;
+using ToucanTesting.Data;
+using ToucanTesting.Filters;
 
-namespace TucanTesting
+namespace ToucanTesting
 {
     public class Startup
     {

@@ -1,2 +1,4 @@
 /bin
 /obj
+Startup.cs
+appsettings.Development.json

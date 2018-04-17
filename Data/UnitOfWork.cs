@@ -4,9 +4,9 @@ namespace ToucanTesting.Data
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly TucanDbContext _context;
+        private readonly ToucanDbContext _context;
 
-        public UnitOfWork(TucanDbContext context)
+        public UnitOfWork(ToucanDbContext context)
         {
             this._context = context;
         }

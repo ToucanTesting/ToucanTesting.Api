@@ -10,8 +10,8 @@ namespace ToucanTesting.Data
 {
     public class TestResultRepository : ITestResultRepository
     {
-        private readonly TucanDbContext _context;
-        public TestResultRepository(TucanDbContext context)
+        private readonly ToucanDbContext _context;
+        public TestResultRepository(ToucanDbContext context)
         {
             this._context = context;
         }

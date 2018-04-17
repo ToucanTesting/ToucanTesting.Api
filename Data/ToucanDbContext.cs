@@ -6,9 +6,9 @@ using ToucanTesting.Models;
 
 namespace ToucanTesting.Data
 {
-    public class TucanDbContext : DbContext
+    public class ToucanDbContext : DbContext
     {
-        public TucanDbContext(DbContextOptions<TucanDbContext> options) : base(options)
+        public ToucanDbContext(DbContextOptions<ToucanDbContext> options) : base(options)
         {
         }
 

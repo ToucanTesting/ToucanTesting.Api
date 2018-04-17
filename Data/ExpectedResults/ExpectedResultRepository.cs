@@ -8,8 +8,8 @@ namespace ToucanTesting.Data
 {
     public class ExpectedResultRepository : IExpectedResultRepository
     {
-        private readonly TucanDbContext _context;
-        public ExpectedResultRepository(TucanDbContext context)
+        private readonly ToucanDbContext _context;
+        public ExpectedResultRepository(ToucanDbContext context)
         {
             this._context = context;
         }

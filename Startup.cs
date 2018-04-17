@@ -66,7 +66,7 @@ namespace ToucanTesting
             services.AddScoped<ITestIssueRepository, TestIssueRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAutoMapper();
-            services.AddDbContext<TucanDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddDbContext<ToucanDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
 
             services
             .AddAuthentication(options =>

@@ -8,8 +8,8 @@ namespace ToucanTesting.Data
 {
     public class TestConditionRepository : ITestConditionRepository
     {
-        private readonly TucanDbContext _context;
-        public TestConditionRepository(TucanDbContext context)
+        private readonly ToucanDbContext _context;
+        public TestConditionRepository(ToucanDbContext context)
         {
             this._context = context;
         }

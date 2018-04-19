@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Authorization;
 namespace ToucanTesting.Controllers.TestSuites
 {
     [Route("/test-suites")]
-    [Authorize]
     public class TestSuitesController : Controller
     {
         private readonly IMapper _mapper;

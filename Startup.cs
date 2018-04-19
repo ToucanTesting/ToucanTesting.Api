@@ -43,15 +43,15 @@ namespace ToucanTesting
                     .AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader()))
-            // .AddMvc(options =>
-            // {
-            //     var policy = new AuthorizationPolicyBuilder()
-            //     .RequireAuthenticatedUser()
-            //     .Build();
-            //     options.Filters.Add(new AuthorizeFilter(policy));
-            //     options.Filters.Add(typeof(ValidateModelAttribute));
-            // })
-            .AddMvc()
+            .AddMvc(options =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                .RequireAuthenticatedUser()
+                .Build();
+                options.Filters.Add(new AuthorizeFilter(policy));
+                options.Filters.Add(typeof(ValidateModelAttribute));
+            })
+            // .AddMvc()
             .AddJsonOptions(options =>
             {
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
@@ -93,6 +93,7 @@ namespace ToucanTesting
             {
                 app.UseDeveloperExceptionPage();
             }
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

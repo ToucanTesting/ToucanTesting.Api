@@ -38,18 +38,20 @@ namespace ToucanTesting
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options => options.AddPolicy("AllowAll", p => p
-            .AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader()))
-            .AddMvc(options =>
-            {
-                var policy = new AuthorizationPolicyBuilder()
-                .RequireAuthenticatedUser()
-                .Build();
-                options.Filters.Add(new AuthorizeFilter(policy));
-                options.Filters.Add(typeof(ValidateModelAttribute));
-            })
+            services.AddCors(options => options.AddPolicy("AllowAll", 
+                builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()))
+            // .AddMvc(options =>
+            // {
+            //     var policy = new AuthorizationPolicyBuilder()
+            //     .RequireAuthenticatedUser()
+            //     .Build();
+            //     options.Filters.Add(new AuthorizeFilter(policy));
+            //     options.Filters.Add(typeof(ValidateModelAttribute));
+            // })
+            .AddMvc()
             .AddJsonOptions(options =>
             {
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
@@ -76,7 +78,7 @@ namespace ToucanTesting
             }).AddJwtBearer(options =>
             {
                 options.Authority = "https://toucantesting.auth0.com/";
-                options.Audience = "http://api.toucantesting.com";
+                options.Audience = "https://api.toucantesting.com";
             });
         }
 

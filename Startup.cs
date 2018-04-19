@@ -78,7 +78,7 @@ namespace ToucanTesting
             }).AddJwtBearer(options =>
             {
                 options.Authority = "https://toucantesting.auth0.com/";
-                options.Audience = "https://api.toucantesting.com";
+                options.Audience = "http://api.toucantesting.com";
             });
         }
 
@@ -93,7 +93,7 @@ namespace ToucanTesting
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

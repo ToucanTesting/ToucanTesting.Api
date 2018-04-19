@@ -13,7 +13,6 @@ using Microsoft.AspNetCore.Authorization;
 namespace ToucanTesting.Controllers.TestActions
 {
     [Route("/test-actions")]
-    [Authorize]
     public class TestActionsController : Controller
     {
         private readonly IMapper _mapper;

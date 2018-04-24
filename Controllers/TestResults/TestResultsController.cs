@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using ToucanTesting.Models;
 using ToucanTesting.Data;
 using System.Linq;
+using ToucanTesting.Filters;
 
 namespace ToucanTesting.Controllers.TestResults
 {
@@ -43,19 +44,17 @@ namespace ToucanTesting.Controllers.TestResults
             return _mapper.Map<List<TestResult>, List<TestResultResource>>(testResults);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> UpdateOrInsertTestResult([FromBody] TestResultResource testResultResource)
+        [HttpPut("{id}")]
+        [ValidateModelIdFilter("id", "testResultResource")]
+        public async Task<IActionResult> UpdateTestSuite(long id, [FromBody] TestResultResource testResultResource)
         {
+            var testResult = await _repository.Get(id);
 
-            var testResult = _mapper.Map<TestResultResource, TestResult>(testResultResource);
-            if (testResultResource.Id == 0)
-            {
-                _repository.Add(testResult);
-            }
+            if (testResult == null)
+                return NotFound();
 
-            var result = _mapper.Map<TestResult, TestResultResource>(testResult);
+            var result = _mapper.Map<TestResultResource, TestResult>(testResultResource, testResult);
             await _unitOfWork.CompleteAsync();
-
             return Ok(result);
         }
     }

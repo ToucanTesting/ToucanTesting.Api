@@ -5,7 +5,7 @@ namespace ToucanTesting.Controllers.TestResults
 {
     public class TestResultResource
     {
-        public long? Id { get; set; }
+        public long Id { get; set; }
         [Required]
         public long TestRunId { get; set; }
         [Required]

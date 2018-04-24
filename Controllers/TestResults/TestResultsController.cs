@@ -48,16 +48,13 @@ namespace ToucanTesting.Controllers.TestResults
         {
 
             var testResult = _mapper.Map<TestResultResource, TestResult>(testResultResource);
-            if (testResultResource.Id == null)
+            if (testResultResource.Id == 0)
             {
                 _repository.Add(testResult);
             }
-            else
-            {
-                _repository.Update(testResult);
-            }
-            await _unitOfWork.CompleteAsync();
+
             var result = _mapper.Map<TestResult, TestResultResource>(testResult);
+            await _unitOfWork.CompleteAsync();
 
             return Ok(result);
         }

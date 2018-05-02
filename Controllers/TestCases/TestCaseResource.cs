@@ -21,6 +21,8 @@ namespace ToucanTesting.Controllers.TestCases
         public Priority Priority { get; set; }
         [Required]
         public bool IsAutomated { get; set; }
+        [StringLength(4)]
+        public string AutomationId { get; set; }
         [Required]
         public bool IsEnabled { get; set; }
         public DateTime? LastTested { get; set; }

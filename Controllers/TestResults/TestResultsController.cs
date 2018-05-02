@@ -46,7 +46,7 @@ namespace ToucanTesting.Controllers.TestResults
 
         [HttpPut("{id}")]
         [ValidateModelIdFilter("id", "testResultResource")]
-        public async Task<IActionResult> UpdateTestSuite(long id, [FromBody] TestResultResource testResultResource)
+        public async Task<IActionResult> UpdateTestResult(long id, [FromBody] TestResultResource testResultResource)
         {
             var testResult = await _repository.Get(id);
 

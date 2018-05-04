@@ -69,7 +69,6 @@ namespace ToucanTesting
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAutoMapper();
             services.AddDbContext<ToucanDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
-            Configuration.GetValue<string>("Auth:Authority");
 
             services
             .AddAuthentication(options =>
@@ -78,8 +77,8 @@ namespace ToucanTesting
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
             {
-                options.Authority = Configuration.GetValue<string>("Auth:Authority");
-                options.Audience = Configuration.GetValue<string>("Auth:Audience");
+                options.Authority = "https://royal-jay.auth0.com/";
+                options.Audience = "https://as-kno2toucanapi-dev.azurewebsites.net";
             });
         }
 

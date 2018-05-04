@@ -78,8 +78,8 @@ namespace ToucanTesting
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
             {
-                options.Authority = Configuration["Auth:Authority"];
-                options.Audience = Configuration["Auth:Audience"];
+                options.Authority = Configuration.GetValue<string>("Auth:Authority");
+                options.Audience = Configuration.GetValue<string>("Auth:Audience");
             });
         }
 

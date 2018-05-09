@@ -86,6 +86,8 @@ namespace ToucanTesting.Data
                 };
 
                 cloneTestCase.TestActions.Add(cloneTestAction);
+                
+
             }
 
             foreach (var testCondition in testCase.TestConditions)

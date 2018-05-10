@@ -43,7 +43,7 @@ namespace ToucanTesting.Data
             else if (beforeDate.HasValue)
             {
                 return await _context.TestModules
-                    .Where(m => m.IsEnabled && m.CreatedAt < beforeDate && m.TestSuiteId == testSuiteId)
+                    .Where(m => m.CreatedAt < beforeDate && m.TestSuiteId == testSuiteId)
                     .ToListAsync();
             }
 

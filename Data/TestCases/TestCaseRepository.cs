@@ -32,6 +32,7 @@ namespace ToucanTesting.Data
 
         public async Task<List<TestCase>> GetAll(long testModuleId, DateTime? beforeDate)
         {
+            // debug
             if (beforeDate.HasValue)
             {
                 return await _context.TestCases

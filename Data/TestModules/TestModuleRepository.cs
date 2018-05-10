@@ -22,6 +22,7 @@ namespace ToucanTesting.Data
 
         public async Task<List<TestModule>> GetAll(long testSuiteId, DateTime? beforeDate, bool? isReport)
         {
+            // debug
             if (isReport.HasValue)
             {
                 return await _context.TestModules
@@ -42,7 +43,7 @@ namespace ToucanTesting.Data
             else if (beforeDate.HasValue)
             {
                 return await _context.TestModules
-                    .Where(m => m.CreatedAt < beforeDate && m.TestSuiteId == testSuiteId)
+                    .Where(m => m.IsEnabled && m.CreatedAt < beforeDate && m.TestSuiteId == testSuiteId)
                     .ToListAsync();
             }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
@@ -16,6 +17,7 @@ namespace ToucanTesting.Models
         [Required]
         public bool IsEnabled { get; set; }
         public ICollection<TestCase> TestCases { get; set; }
+        public DateTime? DisabledAt { get; set; }
         public TestModule()
         {
             TestCases = new Collection<TestCase>();

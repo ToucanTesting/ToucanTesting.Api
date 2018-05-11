@@ -28,13 +28,20 @@ namespace ToucanTesting.Controllers.TestModules
         [HttpPost]
         public async Task<IActionResult> CreateTestModule([FromBody] TestModuleResource resource)
         {
-            var testModule = _mapper.Map<TestModuleResource, TestModule>(resource);
-            _repository.Add(testModule);
-            await _unitOfWork.CompleteAsync();
+            try
+            {
+                var testModule = _mapper.Map<TestModuleResource, TestModule>(resource);
+                _repository.Add(testModule);
+                await _unitOfWork.CompleteAsync();
 
-            var result = _mapper.Map<TestModule, TestModuleResource>(testModule);
+                var result = _mapper.Map<TestModule, TestModuleResource>(testModule);
 
-            return Ok(result);
+                return Ok(result);
+            }
+            catch (Exception err)
+            {
+                return BadRequest(err);
+            }
         }
 
         [HttpGet]

@@ -43,7 +43,10 @@ namespace ToucanTesting.Data
             else if (beforeDate.HasValue)
             {
                 return await _context.TestModules
-                    .Where(m => m.CreatedAt < beforeDate && m.TestSuiteId == testSuiteId)
+                    .Where(m => 
+                        m.CreatedAt < beforeDate 
+                        && m.TestSuiteId == testSuiteId
+                        && (m.DisabledAt == null || m.DisabledAt > beforeDate))
                     .ToListAsync();
             }
 
@@ -70,6 +73,7 @@ namespace ToucanTesting.Data
         public void Remove(TestModule testModule)
         {
             testModule.IsEnabled = false;
+            testModule.DisabledAt = DateTime.UtcNow;
             _context.TestModules.Update(testModule);
         }
     }

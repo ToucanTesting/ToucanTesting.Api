@@ -73,15 +73,24 @@ namespace ToucanTesting.Controllers.TestCases
         [ValidateModelIdFilter("testCaseId", "testCaseResource")]
         public async Task<IActionResult> UpdateTestCase(long testCaseId, [FromBody] TestCaseResource testCaseResource)
         {
-            var testCase = await _repository.Get(testCaseId);
+            try
+            {
+                var testCase = await _repository.Get(testCaseId);
 
-            if (testCase == null)
-                return NotFound();
+                if (testCase == null)
+                    return NotFound();
 
-            var result = _mapper.Map<TestCaseResource, TestCase>(testCaseResource, testCase);
-            _repository.Update(result);
-            await _unitOfWork.CompleteAsync();
-            return Ok(result);
+                var result = _mapper.Map<TestCaseResource, TestCase>(testCaseResource, testCase);
+                _repository.Update(result);
+                await _unitOfWork.CompleteAsync();
+                return Ok(result);
+            }
+            catch (Exception err)
+            {
+                return BadRequest(err);
+            }
+
+
         }
 
         [HttpDelete]

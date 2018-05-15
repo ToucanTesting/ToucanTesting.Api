@@ -123,6 +123,7 @@ namespace ToucanTesting.Data
         public void Remove(TestCase testCase)
         {
             testCase.IsEnabled = false;
+            testCase.DisabledAt = DateTime.UtcNow;
             _context.TestCases.Update(testCase);
         }
     }

@@ -20,14 +20,17 @@ namespace ToucanTesting.Data
             return await _context.TestModules.SingleOrDefaultAsync(s => s.Id == testModuleId);
         }
 
-        public async Task<List<TestModule>> GetAll(long testSuiteId, DateTime? beforeDate, bool? isReport)
+        public async Task<List<TestModule>> GetAll(long testSuiteId, DateTime? testRunCreation, bool? isReport)
         {
             // debug
             if (isReport.HasValue)
             {
                 return await _context.TestModules
                     .Include(tm => tm.TestCases)
-                    .Where(m => m.IsEnabled && m.CreatedAt < beforeDate && m.TestSuiteId == testSuiteId)
+                    .Where(m => 
+                        m.CreatedAt < testRunCreation 
+                        && m.TestSuiteId == testSuiteId
+                        && (m.IsEnabled || m.DisabledAt > testRunCreation)) // Get Test Modules that are active, or were still active at time of Test Run Creation
                     .Select(tm => new TestModule()
                     {
                         Id = tm.Id,
@@ -35,18 +38,18 @@ namespace ToucanTesting.Data
                         UpdatedAt = tm.UpdatedAt,
                         TestSuiteId = tm.TestSuiteId,
                         Name = tm.Name,
-                        TestCases = tm.TestCases.Where(tc => tc.IsEnabled).ToArray()
+                        TestCases = tm.TestCases.Where(tc => tc.IsEnabled || tc.DisabledAt > testRunCreation).ToArray() // Get Test Cases that are active, or were still active at time of Test Run Creation
                     })
                     .ToListAsync();
             }
             
-            else if (beforeDate.HasValue)
+            else if (testRunCreation.HasValue)
             {
                 return await _context.TestModules
                     .Where(m => 
-                        m.CreatedAt < beforeDate 
+                        m.CreatedAt < testRunCreation 
                         && m.TestSuiteId == testSuiteId
-                        && (m.DisabledAt == null || m.DisabledAt > beforeDate))
+                        && (m.DisabledAt == null || m.DisabledAt > testRunCreation))
                     .ToListAsync();
             }
 

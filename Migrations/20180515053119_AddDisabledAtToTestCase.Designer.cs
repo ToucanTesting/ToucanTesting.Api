@@ -12,9 +12,10 @@ using ToucanTesting.Models;
 namespace ToucanTesting.Migrations
 {
     [DbContext(typeof(ToucanDbContext))]
-    partial class ToucanDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180515053119_AddDisabledAtToTestCase")]
+    partial class AddDisabledAtToTestCase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -49,7 +49,7 @@ namespace ToucanTesting.Data
                     .Where(m => 
                         m.CreatedAt < testRunCreation 
                         && m.TestSuiteId == testSuiteId
-                        && (m.DisabledAt == null || m.DisabledAt > testRunCreation))
+                        && (m.IsEnabled || m.DisabledAt > testRunCreation))
                     .ToListAsync();
             }
 

@@ -36,7 +36,9 @@ namespace ToucanTesting.Data
             if (beforeDate.HasValue)
             {
                 return await _context.TestCases
-                .Where(c => c.CreatedAt < beforeDate && c.TestModuleId == testModuleId)
+                .Where(c => c.CreatedAt < beforeDate 
+                && (c.DisabledAt > beforeDate || c.IsEnabled)
+                && c.TestModuleId == testModuleId)
                 .Include(c => c.TestIssues)
                 .ToListAsync();
             }

@@ -39,7 +39,7 @@ namespace ToucanTesting.Data
 
         public void Remove(ExpectedResult expectedResult)
         {
-            _context.ExpectedResults.Update(expectedResult);
+            _context.ExpectedResults.Remove(expectedResult);
         }
     }
 }

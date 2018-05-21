@@ -21,6 +21,8 @@ namespace ToucanTesting.Models
         public string AutomationId { get; set; }
         [Required]
         public bool IsEnabled { get; set; }
+        [Required]
+        public bool HasCriteria { get; set; }
         public DateTime? DisabledAt { get; set; }
         public DateTime? LastTested { get; set; }
         [Required]

@@ -25,6 +25,8 @@ namespace ToucanTesting.Controllers.TestCases
         public string AutomationId { get; set; }
         [Required]
         public bool IsEnabled { get; set; }
+        [Required]
+        public bool HasCriteria { get; set; }
         public DateTime? LastTested { get; set; }
         [Required]
         public long TestModuleId { get; set; }
@@ -39,7 +41,7 @@ namespace ToucanTesting.Controllers.TestCases
             TestConditions = new Collection<TestConditionResource>();
             ExpectedResults = new Collection<ExpectedResultResource>();
             TestIssues = new Collection<TestIssueResource>();
-            
+
         }
 
     }

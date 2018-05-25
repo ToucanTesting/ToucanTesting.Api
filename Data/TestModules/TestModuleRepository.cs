@@ -38,7 +38,9 @@ namespace ToucanTesting.Data
                         UpdatedAt = tm.UpdatedAt,
                         TestSuiteId = tm.TestSuiteId,
                         Name = tm.Name,
-                        TestCases = tm.TestCases.Where(tc => tc.IsEnabled || tc.DisabledAt > testRunCreation).ToArray() // Get Test Cases that are active, or were still active at time of Test Run Creation
+                        TestCases = tm.TestCases.Where(tc => 
+                            tc.CreatedAt < testRunCreation
+                            && (tc.IsEnabled || tc.DisabledAt > testRunCreation)).ToArray() // Get Test Cases that are active, or were still active at time of Test Run Creation
                     })
                     .ToListAsync();
             }

@@ -33,15 +33,6 @@ namespace ToucanTesting.Controllers.TestSuites
             return _mapper.Map<List<TestSuite>, List<TestSuiteResource>>(testSuites);
         }
 
-        [HttpGet]
-        [Route("dummy")]
-        public async Task<List<TestSuiteResource>> GetDummy()
-        {
-            var testSuites = await _repository.GetSuites();
-
-            return _mapper.Map<List<TestSuite>, List<TestSuiteResource>>(testSuites);
-        }
-
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTestSuite(long id)
         {

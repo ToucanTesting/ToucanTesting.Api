@@ -38,9 +38,9 @@ namespace ToucanTesting.Controllers.TestResults
         }
 
         [HttpGet]
-        public async Task<List<TestResultResource>> GetTestResults([FromQuery] long testRunId)
+        public async Task<List<TestResultResource>> GetTestResults([FromQuery] long testRunId, [FromQuery] long testModuleId = -1)
         {
-            var testResults = await _repository.GetAll(testRunId);
+            var testResults = (testModuleId > -1 ) ? await _repository.GetAll(testRunId) : await _repository.GetAll(testRunId, testModuleId);
             return _mapper.Map<List<TestResult>, List<TestResultResource>>(testResults);
         }
 

@@ -26,6 +26,11 @@ namespace ToucanTesting.Data
             return await _context.TestResults.Where(r => r.TestRunId == testRunId).ToListAsync();
         }
 
+        public async Task<List<TestResult>> GetAll(long testRunId, long testModuleId)
+        {
+            return await _context.TestResults.Where(r => r.TestRunId == testRunId && r.TestModuleId == testModuleId).ToListAsync();
+        }
+
         public void Add(TestResult testResult)
         {
             _context.TestResults.Add(testResult);

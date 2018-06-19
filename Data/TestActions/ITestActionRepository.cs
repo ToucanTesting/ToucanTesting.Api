@@ -11,6 +11,7 @@ namespace ToucanTesting.Data
         void Add (TestAction testAction);
 
         void Update (TestAction testAction);
+        Task<List<TestAction>> Sort (TestAction fromAction, long targetActionId);
         void Remove (TestAction testAction);
     }
 }

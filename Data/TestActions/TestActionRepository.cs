@@ -37,6 +37,47 @@ namespace ToucanTesting.Data
             _context.TestActions.Update(testAction);
         }
 
+        public async Task<List<TestAction>> Sort(TestAction fromAction, long targetActionId)
+        {
+            var testActions = await _context.TestActions.Where(a => a.TestCaseId == fromAction.TestCaseId).OrderBy(a => a.Sequence).ToListAsync();
+            var target = testActions.SingleOrDefault(t => t.Id == targetActionId);
+            var from = testActions.SingleOrDefault(t => t.Id == fromAction.Id);
+
+            using (var db = _context.Database.BeginTransaction())
+            {
+                // normalize
+                foreach (var a in testActions)
+                {
+                    a.Sequence = testActions.IndexOf(a) + 1;
+                }
+
+                var start = testActions.IndexOf(target);
+
+                if (from.Sequence > target.Sequence)
+                {
+                    for (var i = start; i < testActions.Count - 1; i++)
+                    {
+                        testActions[i].Sequence = testActions[i].Sequence + 1;
+                    }
+                    from.Sequence = target.Sequence - 1;
+                }
+                else
+                {
+                    for (var i = start; i > 0; i--)
+                    {
+                        testActions[i].Sequence = testActions[i].Sequence - 1;
+                    }
+                    from.Sequence = target.Sequence + 1;
+                }
+
+                await _context.SaveChangesAsync();
+                db.Commit();
+                return testActions.OrderBy(a => a.Sequence).ToList();
+            }
+
+
+
+        }
 
         public void Remove(TestAction testAction)
         {

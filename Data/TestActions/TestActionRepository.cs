@@ -63,7 +63,7 @@ namespace ToucanTesting.Data
                 }
                 else
                 {
-                    for (var i = start; i > 0; i--)
+                    for (var i = start; i >= from.Sequence; i--)
                     {
                         testActions[i].Sequence = testActions[i].Sequence - 1;
                     }

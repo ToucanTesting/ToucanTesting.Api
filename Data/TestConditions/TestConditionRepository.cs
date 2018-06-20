@@ -6,12 +6,10 @@ using System.Linq;
 
 namespace ToucanTesting.Data
 {
-    public class TestConditionRepository : ITestConditionRepository
+    public class TestConditionRepository : BaseRepository, ITestConditionRepository
     {
-        private readonly ToucanDbContext _context;
-        public TestConditionRepository(ToucanDbContext context)
+        public TestConditionRepository(ToucanDbContext context) : base(context)
         {
-            this._context = context;
         }
 
         public async Task<TestCondition> Get(long id)
@@ -36,6 +34,15 @@ namespace ToucanTesting.Data
             _context.TestConditions.Update(testCondition);
         }
 
+        public async Task<List<TestCondition>> Sort(TestCondition fromCondition, long targetId)
+        {
+            var testConditions = await _context.TestConditions.Where(a => a.TestCaseId == fromCondition.TestCaseId).OrderBy(a => a.Sequence).ToListAsync();
+            var origin = testConditions.SingleOrDefault(t => t.Id == fromCondition.Id);
+            var target = testConditions.SingleOrDefault(t => t.Id == targetId);
+
+            var result = await SortBySequence(testConditions, origin, target);
+            return result.ConvertAll(x => (TestCondition)x);
+        }
 
         public void Remove(TestCondition testCondition)
         {

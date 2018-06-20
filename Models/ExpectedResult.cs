@@ -1,8 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using ToucanTesting.Interfaces;
 
 namespace ToucanTesting.Models
 {
-    public class ExpectedResult : BaseEntity
+    public class ExpectedResult : BaseEntity, ISequential
     {
         public long Id { get; set; }
         [Required]
@@ -11,5 +12,7 @@ namespace ToucanTesting.Models
         [StringLength(255)]
         [MinLength(3)]
         public string Description { get; set; }
+        [Required]
+        public int Sequence { get; set; }
     }
 }

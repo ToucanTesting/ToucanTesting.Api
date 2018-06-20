@@ -11,6 +11,8 @@ namespace ToucanTesting.Data
         void Add (TestCondition testCondition);
 
         void Update (TestCondition testCondition);
+        Task<List<TestCondition>> Sort (TestCondition fromCondition, long targetId);
+
         void Remove (TestCondition testCondition);
     }
 }

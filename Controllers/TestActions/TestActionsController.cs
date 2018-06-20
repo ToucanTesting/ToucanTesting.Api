@@ -60,11 +60,11 @@ namespace ToucanTesting.Controllers.TestActions
             return Ok(result);
         }
 
-        [HttpPut("{targetActionId}/sort")]
-        public async Task<IActionResult> SortTestAction(long targetActionId, [FromBody] TestActionResource fromActionResource)
+        [HttpPut("{targetId}/sort")]
+        public async Task<IActionResult> SortTestAction(long targetId, [FromBody] TestActionResource fromActionResource)
         {
             var fromAction = _mapper.Map<TestActionResource, TestAction>(fromActionResource);
-            List<TestAction> result = await _repository.Sort(fromAction, targetActionId);
+            List<TestAction> result = await _repository.Sort(fromAction, targetId);
             return Ok(_mapper.Map<List<TestAction>, List<TestActionResource>>(result));
         }
 

@@ -1,9 +1,10 @@
 using System.ComponentModel.DataAnnotations;
+using ToucanTesting.Interfaces;
 using ToucanTesting.Models;
 
 namespace ToucanTesting.Controllers.TestActions
 {
-    public class TestActionResource
+    public class TestActionResource : ISequential
     {
         public long Id { get; set; }
         [Required]

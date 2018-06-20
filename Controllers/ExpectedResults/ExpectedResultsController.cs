@@ -59,6 +59,14 @@ namespace ToucanTesting.Controllers.ExpectedResults
             return Ok(result);
         }
 
+        [HttpPut("{targetId}/sort")]
+        public async Task<IActionResult> SortExpectedResults(long targetId, [FromBody] ExpectedResultResource expectedResultResource)
+        {
+            var origin = _mapper.Map<ExpectedResultResource, ExpectedResult>(expectedResultResource);
+            List<ExpectedResult> result = await _repository.Sort(origin, targetId);
+            return Ok(_mapper.Map<List<ExpectedResult>, List<ExpectedResultResource>>(result));
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteExpectedResult(long id)
         {

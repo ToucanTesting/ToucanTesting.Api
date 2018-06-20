@@ -1,9 +1,10 @@
 using System.ComponentModel.DataAnnotations;
+using ToucanTesting.Interfaces;
 using ToucanTesting.Models;
 
 namespace ToucanTesting.Controllers.TestConditions
 {
-    public class TestConditionResource
+    public class TestConditionResource : ISequential
     {
         public long Id { get; set; }
         [Required]
@@ -12,5 +13,7 @@ namespace ToucanTesting.Controllers.TestConditions
         [StringLength(255)]
         [MinLength(3)]
         public string Description { get; set; }
+        [Required]
+        public int Sequence { get; set; }
     }
 }

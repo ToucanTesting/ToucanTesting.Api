@@ -1,8 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using ToucanTesting.Interfaces;
 
 namespace ToucanTesting.Models
 {
-    public class TestAction : BaseEntity
+    public class TestAction : BaseEntity, ISequential
     {
         // Action == Step
         public long Id { get; set; }

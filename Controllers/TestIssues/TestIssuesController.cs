@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ToucanTesting.Data;
+using ToucanTesting.Filters;
 using ToucanTesting.Models;
 
 namespace ToucanTesting.Api.Controllers.TestIssues
@@ -40,21 +41,21 @@ namespace ToucanTesting.Api.Controllers.TestIssues
             return _mapper.Map<List<TestIssue>, List<TestIssueResource>>(testIssues);
         }
 
-        // [HttpPut]
-        // [Route("/test-cases/{testCaseId}")]
-        // [ValidateModelIdFilter("testCaseId", "testCaseResource")]
-        // public async Task<IActionResult> UpdateTestCase(long testCaseId, [FromBody] TestCaseResource testCaseResource)
-        // {
-        //     var testCase = await _repository.Get(testCaseId);
+        [HttpPut]
+        [Route("/test-issues/{testIssueId}")]
+        [ValidateModelIdFilter("testIssueId", "testIssueResource")]
+        public async Task<IActionResult> UpdateTestCase(long testIssueId, [FromBody] TestIssueResource testIssueResource)
+        {
+            var testIssue = await _repository.Get(testIssueId);
 
-        //     if (testCase == null)
-        //         return NotFound();
+            if (testIssue == null)
+                return NotFound();
 
-        //     var result = _mapper.Map<TestCaseResource, TestCase>(testCaseResource, testCase);
-        //     _repository.Update(result);
-        //     await _unitOfWork.CompleteAsync();
-        //     return Ok(result);
-        // }
+            var result = _mapper.Map<TestIssueResource, TestIssue>(testIssueResource, testIssue);
+            _repository.Update(result);
+            await _unitOfWork.CompleteAsync();
+            return Ok(result);
+        }
 
         [HttpDelete("{testIssueId}")]
         public async Task<IActionResult> Delete(long testIssueId)

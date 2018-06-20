@@ -9,8 +9,8 @@ namespace ToucanTesting.Data
         Task<ExpectedResult> Get (long id);
         Task<List<ExpectedResult>> GetAll(long testCaseId);
         void Add (ExpectedResult expectedResult);
-
         void Update (ExpectedResult expectedResult);
+        Task<List<ExpectedResult>> Sort (ExpectedResult fromExpectedResult, long targetId);
         void Remove (ExpectedResult expectedResult);
     }
 }

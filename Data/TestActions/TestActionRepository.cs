@@ -3,15 +3,15 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using ToucanTesting.Interfaces;
+using System;
 
 namespace ToucanTesting.Data
 {
-    public class TestActionRepository : ITestActionRepository
+    public class TestActionRepository : BaseRepository, ITestActionRepository
     {
-        private readonly ToucanDbContext _context;
-        public TestActionRepository(ToucanDbContext context)
+        public TestActionRepository(ToucanDbContext context) : base(context)
         {
-            this._context = context;
         }
 
         public async Task<TestAction> Get(long id)
@@ -37,6 +37,15 @@ namespace ToucanTesting.Data
             _context.TestActions.Update(testAction);
         }
 
+        public async Task<List<TestAction>> Sort(TestAction fromAction, long targetId)
+        {
+            var testActions = await _context.TestActions.Where(a => a.TestCaseId == fromAction.TestCaseId).OrderBy(a => a.Sequence).ToListAsync();
+            var origin = testActions.SingleOrDefault(t => t.Id == fromAction.Id);
+            var target = testActions.SingleOrDefault(t => t.Id == targetId);
+
+            var result = await SortBySequence(testActions, origin, target);
+            return result.ConvertAll(x => (TestAction)x);
+        }
 
         public void Remove(TestAction testAction)
         {

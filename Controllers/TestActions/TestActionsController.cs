@@ -60,6 +60,14 @@ namespace ToucanTesting.Controllers.TestActions
             return Ok(result);
         }
 
+        [HttpPut("{targetId}/sort")]
+        public async Task<IActionResult> SortTestAction(long targetId, [FromBody] TestActionResource fromActionResource)
+        {
+            var fromAction = _mapper.Map<TestActionResource, TestAction>(fromActionResource);
+            List<TestAction> result = await _repository.Sort(fromAction, targetId);
+            return Ok(_mapper.Map<List<TestAction>, List<TestActionResource>>(result));
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTestAction(long id)
         {

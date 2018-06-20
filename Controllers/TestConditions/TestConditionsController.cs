@@ -59,6 +59,14 @@ namespace ToucanTesting.Controllers.TestConditions
             return Ok(result);
         }
 
+        [HttpPut("{targetId}/sort")]
+        public async Task<IActionResult> SortTestAction(long targetId, [FromBody] TestConditionResource fromConditionResource)
+        {
+            var fromCondition = _mapper.Map<TestConditionResource, TestCondition>(fromConditionResource);
+            List<TestCondition> result = await _repository.Sort(fromCondition, targetId);
+            return Ok(_mapper.Map<List<TestCondition>, List<TestConditionResource>>(result));
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTestCondition(long id)
         {

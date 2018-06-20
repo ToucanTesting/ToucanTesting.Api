@@ -6,12 +6,10 @@ using System.Linq;
 
 namespace ToucanTesting.Data
 {
-    public class ExpectedResultRepository : IExpectedResultRepository
+    public class ExpectedResultRepository : BaseRepository, IExpectedResultRepository
     {
-        private readonly ToucanDbContext _context;
-        public ExpectedResultRepository(ToucanDbContext context)
+        public ExpectedResultRepository(ToucanDbContext context) : base(context)
         {
-            this._context = context;
         }
 
         public async Task<ExpectedResult> Get(long id)
@@ -36,6 +34,15 @@ namespace ToucanTesting.Data
             _context.ExpectedResults.Update(expectedResult);
         }
 
+        public async Task<List<ExpectedResult>> Sort(ExpectedResult fromExpectedResult, long targetId)
+        {
+            var expectedResults = await _context.ExpectedResults.Where(a => a.TestCaseId == fromExpectedResult.TestCaseId).OrderBy(a => a.Sequence).ToListAsync();
+            var origin = expectedResults.SingleOrDefault(t => t.Id == fromExpectedResult.Id);
+            var target = expectedResults.SingleOrDefault(t => t.Id == targetId);
+
+            var result = await SortBySequence(expectedResults, origin, target);
+            return result.ConvertAll(x => (ExpectedResult)x);
+        }
 
         public void Remove(ExpectedResult expectedResult)
         {

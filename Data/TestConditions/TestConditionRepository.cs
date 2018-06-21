@@ -21,6 +21,7 @@ namespace ToucanTesting.Data
         {
             return await _context.TestConditions
                 .Where(c => c.TestCaseId == testCaseId)
+                .OrderBy(c => c.Sequence)
                 .ToListAsync();
         }
 

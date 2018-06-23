@@ -42,7 +42,8 @@ namespace ToucanTesting
                 builder => builder
                     .AllowAnyOrigin()
                     .AllowAnyMethod()
-                    .AllowAnyHeader()))
+                    .AllowAnyHeader()
+                    .WithExposedHeaders(new string[] {"totalPages"})))
             .AddMvc(options =>
             {
                 var policy = new AuthorizationPolicyBuilder()

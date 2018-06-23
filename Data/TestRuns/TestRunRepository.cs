@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using ToucanTesting.Controllers.TestSuites;
+using System.Linq;
+using System;
 
 namespace ToucanTesting.Data
 {
@@ -28,10 +30,21 @@ namespace ToucanTesting.Data
             .Include(r => r.TestSuite)
             .SingleOrDefaultAsync(r => r.Id == id);
         }
-
-        public async Task<List<TestRun>> GetAll()
+        public async Task<List<TestRun>> GetPage(int pageNumber, int pageSize)
         {
-            return await _context.TestRuns.ToListAsync();
+            return await _context.TestRuns
+                .OrderByDescending(r => r.CreatedAt)
+                .Skip(pageNumber * pageSize - pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+        }
+
+        public async Task<int> GetPageCount(int pageSize)
+        {
+            int result = await _context.TestRuns.CountAsync();
+            int fullPages = result / pageSize;
+            int lastPage = (result % pageSize != 0) ? 1 : 0;
+            return fullPages + lastPage;
         }
 
         public void Add(TestRun testRun)

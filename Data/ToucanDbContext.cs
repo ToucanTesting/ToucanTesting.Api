@@ -6,7 +6,12 @@ using ToucanTesting.Models;
 
 namespace ToucanTesting.Data
 {
-    public class ToucanDbContext : DbContext
+    public interface IToucanDbContext
+    {
+        DbSet<TestSuite> TestSuites { get; set; }
+    }
+
+    public class ToucanDbContext : DbContext, IToucanDbContext
     {
         public ToucanDbContext(DbContextOptions<ToucanDbContext> options) : base(options)
         {
@@ -46,8 +51,6 @@ namespace ToucanTesting.Data
         public DbSet<TestRun> TestRuns { get; set; }
         public DbSet<TestCase> TestCases { get; set; }
         public DbSet<TestResult> TestResults { get; set; }
-
-        // Necesssary???
         public DbSet<TestCondition> TestConditions { get; set; }
         public DbSet<TestAction> TestActions { get; set; }
         public DbSet<ExpectedResult> ExpectedResults { get; set; }

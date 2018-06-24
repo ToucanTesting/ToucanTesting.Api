@@ -36,7 +36,7 @@ namespace ToucanTesting.Data
             if (beforeDate.HasValue)
             {
                 return await _context.TestCases
-                .Where(c => c.CreatedAt < beforeDate 
+                .Where(c => c.CreatedAt < beforeDate
                 && (c.DisabledAt > beforeDate || c.IsEnabled)
                 && c.TestModuleId == testModuleId)
                 .Include(c => c.TestIssues)
@@ -44,6 +44,14 @@ namespace ToucanTesting.Data
             }
             return await _context.TestCases
                 .Where(c => c.IsEnabled == true && c.TestModuleId == testModuleId)
+                .Include(c => c.TestIssues)
+                .ToListAsync();
+        }
+
+        public async Task<List<TestCase>> GetContains(string searchText)
+        {
+            return await _context.TestCases
+                .Where(c => c.Description.Contains(searchText))
                 .Include(c => c.TestIssues)
                 .ToListAsync();
         }
@@ -89,7 +97,7 @@ namespace ToucanTesting.Data
                 };
 
                 cloneTestCase.TestActions.Add(cloneTestAction);
-                
+
 
             }
 

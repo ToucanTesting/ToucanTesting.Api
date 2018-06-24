@@ -67,7 +67,7 @@ namespace ToucanTesting.Controllers.TestModules
 
         [HttpPut("{id}")]
         [ValidateModelIdFilter("id", "moduleResource")]
-        public async Task<IActionResult> UpdateTestSuite(long id, [FromBody] TestModuleResource moduleResource)
+        public async Task<IActionResult> UpdateTestModule(long id, [FromBody] TestModuleResource moduleResource)
         {
             var testModule = await _repository.Get(id);
 
@@ -77,6 +77,14 @@ namespace ToucanTesting.Controllers.TestModules
             var result = _mapper.Map<TestModuleResource, TestModule>(moduleResource, testModule);
             await _unitOfWork.CompleteAsync();
             return Ok(result);
+        }
+
+        [HttpPut("{targetId}/sort")]
+        public async Task<IActionResult> SortTestAction(long targetId, [FromBody] TestModuleResource moduleResource)
+        {
+            var fromModule = _mapper.Map<TestModuleResource, TestModule>(moduleResource);
+            List<TestModule> result = await _repository.Sort(fromModule, targetId);
+            return Ok(_mapper.Map<List<TestModule>, List<TestModuleResource>>(result));
         }
 
         [HttpDelete("{id}")]

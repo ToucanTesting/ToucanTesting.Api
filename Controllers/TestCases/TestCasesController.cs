@@ -52,6 +52,15 @@ namespace ToucanTesting.Controllers.TestCases
         }
 
         [HttpGet]
+        [Route("/test-cases")]
+        public async Task<List<TestCaseResource>> GetTestCases([FromQuery]string searchText)
+        {
+
+            var testCases = await _repository.GetContains(searchText);
+            return _mapper.Map<List<TestCase>, List<TestCaseResource>>(testCases);
+        }
+
+        [HttpGet]
         [Route("/test-suites/{testSuiteId}/test-modules/{testModuleId}/test-cases")]
         public async Task<List<TestCaseResource>> GetTestCases(long testModuleId, [FromQuery]DateTime? beforeDate)
         {

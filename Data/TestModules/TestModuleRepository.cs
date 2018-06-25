@@ -29,6 +29,7 @@ namespace ToucanTesting.Data
                         m.CreatedAt < testRunCreation
                         && m.TestSuiteId == testSuiteId
                         && (m.IsEnabled || m.DisabledAt > testRunCreation)) // Get Test Modules that are active, or were still active at time of Test Run Creation
+                    .OrderBy(a => a.Sequence)
                     .Select(tm => new TestModule()
                     {
                         Id = tm.Id,
@@ -40,7 +41,6 @@ namespace ToucanTesting.Data
                             tc.CreatedAt < testRunCreation
                             && (tc.IsEnabled || tc.DisabledAt > testRunCreation)).ToArray() // Get Test Cases that are active, or were still active at time of Test Run Creation
                     })
-                    .OrderBy(a => a.Sequence)
                     .ToListAsync();
             }
 

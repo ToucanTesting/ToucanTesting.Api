@@ -61,6 +61,15 @@ namespace ToucanTesting.Data
             return await _context.TestIssues.Where(ti => ti.TestCaseId == testCaseId).ToListAsync();
         }
 
+        public async Task<Boolean> CheckAutomationId(long testCaseId, string automationId)
+        {
+            var result = await _context.TestCases.Where(c => c.AutomationId == automationId).SingleOrDefaultAsync();
+            if (!string.IsNullOrEmpty(result.AutomationId) && result.Id != testCaseId) {
+                throw new Exception("Automation ID in use");
+            }
+            return false;
+        }
+
         public void Add(TestCase testCase)
         {
             _context.TestCases.Add(testCase);

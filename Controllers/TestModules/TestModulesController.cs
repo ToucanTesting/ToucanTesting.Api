@@ -45,10 +45,16 @@ namespace ToucanTesting.Controllers.TestModules
         }
 
         [HttpGet]
-        public async Task<List<TestModuleResource>> GetTestModules(long testSuiteId, [FromQuery]DateTime? beforeDate, [FromQuery]bool? isReport)
+        public async Task<IActionResult> GetTestModules(long testSuiteId, [FromQuery]DateTime? beforeDate, [FromQuery]bool? isReport)
         {
-            var testModules = await _repository.GetAll(testSuiteId, beforeDate, isReport);
-            return _mapper.Map<List<TestModule>, List<TestModuleResource>>(testModules);
+            try
+            {
+                var testModules = await _repository.GetAll(testSuiteId, beforeDate, isReport);
+                return Ok(_mapper.Map<List<TestModule>, List<TestModuleResource>>(testModules));
+            } 
+            catch (Exception err) {
+                return BadRequest(err);
+            }
         }
 
         [HttpGet("{id}")]

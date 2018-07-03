@@ -64,7 +64,6 @@ namespace ToucanTesting.Controllers.TestCases
         [Route("/test-suites/{testSuiteId}/test-modules/{testModuleId}/test-cases")]
         public async Task<List<TestCaseResource>> GetTestCases(long testModuleId, [FromQuery]DateTime? beforeDate)
         {
-
             var testCases = await _repository.GetAll(testModuleId, beforeDate);
             return _mapper.Map<List<TestCase>, List<TestCaseResource>>(testCases);
         }
@@ -84,6 +83,7 @@ namespace ToucanTesting.Controllers.TestCases
         {
             try
             {
+                var automationIdInUse = await _repository.CheckAutomationId(testCaseId, testCaseResource.AutomationId);
                 var testCase = await _repository.Get(testCaseId);
 
                 if (testCase == null)

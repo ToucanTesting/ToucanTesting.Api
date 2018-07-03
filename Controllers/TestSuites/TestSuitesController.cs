@@ -9,8 +9,6 @@ using ToucanTesting.Data;
 using ToucanTesting.Utils;
 using ToucanTesting.Filters;
 using Microsoft.AspNetCore.Authorization;
-using System.IO;
-using System.Text;
 
 namespace ToucanTesting.Controllers.TestSuites
 {

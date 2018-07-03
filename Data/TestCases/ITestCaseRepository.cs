@@ -11,6 +11,7 @@ namespace ToucanTesting.Data
         Task<List<TestCase>> GetAll(long testModuleId, DateTime? beforeDate);
         Task<List<TestCase>> GetContains(string searchText);
         Task<List<TestIssue>> GetIssues(long testCaseId);
+        Task<Boolean> CheckAutomationId(long testCaseId, string automationId);
         void Add (TestCase testCase);
         Task<TestCase> Duplicate (long testCaseId);
         void Update (TestCase testCase);

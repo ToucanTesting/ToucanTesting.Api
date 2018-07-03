@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ToucanTesting.Models;
 using ToucanTesting.Data;
+using ToucanTesting.Utils;
 using ToucanTesting.Filters;
 using Microsoft.AspNetCore.Authorization;
 
@@ -31,6 +32,19 @@ namespace ToucanTesting.Controllers.TestSuites
             var testSuites = await _repository.GetSuites();
 
             return _mapper.Map<List<TestSuite>, List<TestSuiteResource>>(testSuites);
+        }
+
+        [HttpGet("{id}/export")]
+        public async Task<IActionResult> ExportTestSuite(long id)
+        {
+            var testSuite = await _repository.GetSuite(id, true);
+            if (testSuite == null)
+            {
+                return NotFound();
+            }
+
+            CsvGenerator csvGenerator = new CsvGenerator();
+            return Ok(csvGenerator.GenerateFromSuite(testSuite));
         }
 
         [HttpGet("{id}")]

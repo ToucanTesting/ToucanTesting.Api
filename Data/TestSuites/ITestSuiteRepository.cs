@@ -7,7 +7,7 @@ namespace ToucanTesting.Data
 {
     public interface ITestSuiteRepository
     {
-        Task<TestSuite> GetSuite(long id);
+        Task<TestSuite> GetSuite(long id, bool includeChildren = false);
         Task<List<TestSuite>> GetSuites();
         void Add(TestSuite testSuite);
         void Update(TestSuite testSuite);

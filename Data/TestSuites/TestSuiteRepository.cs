@@ -44,6 +44,7 @@ namespace ToucanTesting.Data
                             Description = tc.Description,
                             LastTested = tc.LastTested,
                             IsAutomated = tc.IsAutomated,
+                            AutomationId = tc.AutomationId,
                             HasCriteria = tc.HasCriteria,
                             ExpectedResults = tc.ExpectedResults.OrderBy(e => e.Sequence).ToArray(),
                             TestConditions = tc.TestConditions.OrderBy(c => c.Sequence).ToArray(),

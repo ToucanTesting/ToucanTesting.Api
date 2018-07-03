@@ -8,7 +8,7 @@ namespace ToucanTesting.Utils
         public string GenerateFromSuite(TestSuite suite)
         {
             var builder = new StringBuilder();
-            builder.Append("Suite, Module, Last Tested, Automated, Criteria, Priority, Case, Expected Results, Conditions, Steps\r\n");
+            builder.Append("Suite, Module, Last Tested, Automated, Automation ID, Criteria, Priority, Case, Expected Results, Conditions, Steps\r\n");
 
             foreach (TestModule tm in suite.TestModules)
             {
@@ -25,6 +25,7 @@ namespace ToucanTesting.Utils
                     builder.Append($"\"{moduleName}\",");
                     builder.Append($"\"{lastTested}\",");
                     builder.Append($"\"{isAutomated}\",");
+                    builder.Append($"\"{tc.AutomationId}\",");
                     builder.Append($"\"{hasCriteria}\",");
                     builder.Append($"\"{tc.Priority.ToString()}\",");
                     builder.Append($"\"{caseDescription}\",");

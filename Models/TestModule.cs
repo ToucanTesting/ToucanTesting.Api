@@ -8,7 +8,6 @@ namespace ToucanTesting.Models
 {
     public class TestModule : BaseEntity, ISequential
     {
-        public long Id { get; set; }
         [Required]
         public long TestSuiteId { get; set; }
         [Required]

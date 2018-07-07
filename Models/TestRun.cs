@@ -6,7 +6,6 @@ namespace ToucanTesting.Models
 {
     public class TestRun : BaseEntity
     {
-        public long Id { get; set; }
         [Required]
         [StringLength(255)]
         [MinLength(3)]

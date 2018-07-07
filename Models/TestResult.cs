@@ -5,7 +5,6 @@ namespace ToucanTesting.Models
     public enum TestResultStatus { Pass, Fail, CNT, NA, Pending }
     public class TestResult : BaseEntity
     {
-        public long Id { get; set; }
         [Required]
         public long TestRunId { get; set; }
         [Required]

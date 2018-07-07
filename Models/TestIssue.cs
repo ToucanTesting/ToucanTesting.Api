@@ -7,8 +7,6 @@ namespace ToucanTesting.Models
 {
     public class TestIssue : BaseEntity
     {
-        public long Id { get; set; }
-
         [Required]
         public long TestCaseId { get; set; }
 

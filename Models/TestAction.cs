@@ -5,8 +5,6 @@ namespace ToucanTesting.Models
 {
     public class TestAction : BaseEntity, ISequential
     {
-        // Action == Step
-        public long Id { get; set; }
         [Required]
         public long TestCaseId { get; set; }
         [Required]

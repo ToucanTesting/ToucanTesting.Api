@@ -64,7 +64,7 @@ namespace ToucanTesting.Data
         public async Task<Boolean> CheckAutomationId(long testCaseId, string automationId)
         {
             var result = await _context.TestCases.Where(c => c.AutomationId == automationId).FirstOrDefaultAsync();
-            if (!string.IsNullOrEmpty(result.AutomationId) && result.Id != testCaseId) {
+            if (!string.IsNullOrEmpty(result?.AutomationId) && result?.Id != testCaseId) {
                 throw new Exception("Automation ID in use");
             }
             return false;

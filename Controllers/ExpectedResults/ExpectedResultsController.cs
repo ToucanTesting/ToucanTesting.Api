@@ -38,7 +38,7 @@ namespace ToucanTesting.Controllers.ExpectedResults
         }
 
         [HttpGet]
-        [Route("/test-suites/{testSuiteId}/test-modules/{testModuleId}/test-cases/{testCaseId}/expected-results")]
+        [Route("/test-cases/{testCaseId}/expected-results")]
         public async Task<List<ExpectedResultResource>> GetExpectedResults(long testCaseId)
         {
             var expectedResults = await _repository.GetAll(testCaseId);

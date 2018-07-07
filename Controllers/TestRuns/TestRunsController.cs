@@ -28,7 +28,7 @@ namespace ToucanTesting.Controllers.TestSuites
         {
             var pageCount = await _repository.GetPageCount(pageSize);
             var testRuns = await _repository.GetPage(pageNumber, pageSize);
-            HttpContext.Response.Headers.Add("totalPages", pageCount.ToString());
+            HttpContext.Response.Headers.Add("totalPages", (pageCount >= 1) ? pageCount.ToString() : "1");
 
             return _mapper.Map<List<TestRun>, List<TestRunResource>>(testRuns);
         }

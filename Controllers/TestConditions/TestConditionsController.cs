@@ -38,7 +38,7 @@ namespace ToucanTesting.Controllers.TestConditions
         }
 
         [HttpGet]
-        [Route("/test-suites/{testSuiteId}/test-modules/{testModuleId}/test-cases/{testCaseId}/test-conditions")]
+        [Route("/test-cases/{testCaseId}/test-conditions")]
         public async Task<List<TestConditionResource>> GetTestConditions(long testCaseId)
         {
             var testConditions = await _repository.GetAll(testCaseId);

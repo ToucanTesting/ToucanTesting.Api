@@ -52,20 +52,19 @@ namespace ToucanTesting.Controllers.TestCases
         }
 
         [HttpGet]
+        [Route("/test-cases/{testCaseId}")]
+        public async Task<TestCaseResource> GetTestCases(long testCaseId)
+        {
+            var testCase = await _repository.Get(testCaseId);
+            return _mapper.Map<TestCase, TestCaseResource>(testCase);
+        }
+
+        [HttpGet]
         [Route("/test-cases")]
         public async Task<List<TestCaseResource>> GetTestCases([FromQuery]string searchText)
         {
 
             var testCases = await _repository.GetContains(searchText);
-            return _mapper.Map<List<TestCase>, List<TestCaseResource>>(testCases);
-        }
-
-        [HttpGet]
-        [Route("/test-cases")]
-        public async Task<List<TestCaseResource>> GetCaseByAutomationId([FromQuery]string automationId)
-        {
-
-            var testCases = await _repository.GetContains(automationId);
             return _mapper.Map<List<TestCase>, List<TestCaseResource>>(testCases);
         }
 
@@ -79,7 +78,7 @@ namespace ToucanTesting.Controllers.TestCases
 
         [HttpGet]
         [Route("/test-cases/{testCaseId}/test-issues/")]
-        public async Task<List<TestIssueResource>> GetTestCases(long testCaseId)
+        public async Task<List<TestIssueResource>> GetTestIssues(long testCaseId)
         {
             var testIssues = await _repository.GetIssues(testCaseId);
             return _mapper.Map<List<TestIssue>, List<TestIssueResource>>(testIssues);

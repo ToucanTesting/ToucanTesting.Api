@@ -8,7 +8,6 @@ namespace ToucanTesting.Models
     public enum Priority { Low, Medium, High, Critical }
     public class TestCase : BaseEntity
     {
-        public long Id { get; set; }
         [Required]
         [StringLength(255)]
         [MinLength(3)]

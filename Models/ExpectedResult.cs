@@ -5,7 +5,6 @@ namespace ToucanTesting.Models
 {
     public class ExpectedResult : BaseEntity, ISequential
     {
-        public long Id { get; set; }
         [Required]
         public long TestCaseId { get; set; }
         [Required]

@@ -39,7 +39,7 @@ namespace ToucanTesting.Controllers.TestActions
         }
 
         [HttpGet]
-        [Route("/test-suites/{testSuiteId}/test-modules/{testModuleId}/test-cases/{testCaseId}/test-actions")]
+        [Route("/test-cases/{testCaseId}/test-actions")]
         public async Task<List<TestActionResource>> GetTestActions(long testCaseId)
         {
             var testActions = await _repository.GetAll(testCaseId);

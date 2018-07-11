@@ -9,7 +9,7 @@ namespace ToucanTesting.Data
     public interface ITestRunRepository : IPageable
     {
         Task<TestRun> Get(long testRunId, bool includeRelated);
-        Task<List<TestRun>> GetPage(int pageNumber, int pageSize);
+        Task<List<TestRun>> GetPage(int pageNumber, int pageSize, string searchText);
         void Add(TestRun testRun);
         void Update(TestRun testRun);
         void Remove(TestRun testRun);

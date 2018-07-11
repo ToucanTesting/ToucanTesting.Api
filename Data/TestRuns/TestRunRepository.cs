@@ -30,20 +30,33 @@ namespace ToucanTesting.Data
             .Include(r => r.TestSuite)
             .SingleOrDefaultAsync(r => r.Id == id);
         }
-        public async Task<List<TestRun>> GetPage(int pageNumber, int pageSize)
+        public async Task<List<TestRun>> GetPage(int pageNumber, int pageSize, string searchText)
         {
+            if (string.IsNullOrEmpty(searchText))
+            {
+                return await _context.TestRuns
+                    .OrderByDescending(r => r.CreatedAt)
+                    .Skip(pageNumber * pageSize - pageSize)
+                    .Take(pageSize)
+                    .ToListAsync();
+            }
+
             return await _context.TestRuns
+                .Where(r => r.Name.Contains(searchText))
                 .OrderByDescending(r => r.CreatedAt)
                 .Skip(pageNumber * pageSize - pageSize)
                 .Take(pageSize)
                 .ToListAsync();
         }
 
-        public async Task<int> GetPageCount(int pageSize)
+        public async Task<int> GetPageCount(int pageSize, string searchText)
         {
-            int result = await _context.TestRuns.CountAsync();
+            int result = (string.IsNullOrEmpty(searchText)) ?
+                await _context.TestRuns.CountAsync() :
+                await _context.TestRuns.Where(r => r.Name.Contains(searchText)).CountAsync();
             int fullPages = result / pageSize;
             int lastPage = (result % pageSize != 0) ? 1 : 0;
+
             return fullPages + lastPage;
         }
 

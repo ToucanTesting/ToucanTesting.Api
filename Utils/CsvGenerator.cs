@@ -16,7 +16,7 @@ namespace ToucanTesting.Utils
                 {
                     var suiteName = suite.Name.Replace("\"", string.Empty);
                     var moduleName = tm.Name.Replace("\"", string.Empty);
-                    var lastTested = (tc.LastTested.HasValue) ? tc.LastTested.Value.ToString("mm/dd/yyyy") : "Never Tested";
+                    var lastTested = (tc.LastTested.HasValue) ? tc.LastTested.Value.Date.ToString("d") : "Never Tested";
                     var isAutomated = tc.IsAutomated ? "Yes" : "No";
                     var hasCriteria = tc.HasCriteria ? "Yes" : "No";
                     var caseDescription = tc.Description.Replace("\"", string.Empty);

@@ -8,7 +8,7 @@ namespace ToucanTesting.Api.Controllers.TestIssues
         public long Id { get; set; }
         [Required]
         public long TestCaseId { get; set; }
-        public long TestRunId? { get; set; }
+        public long? TestRunId { get; set; }
         [Required]
         [StringLength(16)]
         [MinLength(3)]

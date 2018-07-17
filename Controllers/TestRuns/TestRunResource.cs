@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using ToucanTesting.Api.Controllers.TestIssues;
 using ToucanTesting.Controllers.TestModules;
 using ToucanTesting.Controllers.TestResults;
 using ToucanTesting.Models;
@@ -18,11 +19,12 @@ namespace ToucanTesting.Controllers.TestSuites
         [Required]
         public long TestSuiteId { get; set; }
         public TestSuite TestSuite { get; set; }
-
         public ICollection<TestResultResource> TestResults { get; set; }
+        public ICollection<TestIssueResource> TestIssues { get; set; }
         public TestRunResource()
         {
             TestResults = new Collection<TestResultResource>();
+            TestIssues = new Collection<TestIssueResource>();
         }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }

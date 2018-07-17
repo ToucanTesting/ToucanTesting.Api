@@ -14,9 +14,11 @@ namespace ToucanTesting.Models
         public long TestSuiteId { get; set; }
         public TestSuite TestSuite { get; set; }
         public ICollection<TestResult> TestResults { get; set; }
+        public ICollection<TestIssue> TestIssues { get; set; }
         public TestRun()
         {
             TestResults = new Collection<TestResult>();
+            TestIssues = new Collection<TestIssue>();
         }
     }
 }

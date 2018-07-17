@@ -24,6 +24,7 @@ namespace ToucanTesting.Data
                 return await _context.TestRuns
                 .Include(r => r.TestSuite)
                 .Include(r => r.TestResults)
+                .Include(r => r.TestIssues)
                 .SingleOrDefaultAsync(r => r.Id == id);
             }
             return await _context.TestRuns

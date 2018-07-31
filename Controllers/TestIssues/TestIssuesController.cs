@@ -35,9 +35,20 @@ namespace ToucanTesting.Api.Controllers.TestIssues
         }
 
         [HttpGet]
-        public async Task<List<TestIssueResource>> GetAll()
+        public async Task<List<TestIssueResource>> GetAll([FromQuery]int pageNumber, [FromQuery]int pageSize, [FromQuery]string searchText = "")
         {
-            var testIssues = await _repository.GetAll();
+            var testIssues = new List<TestIssue>();
+            int pageCount;
+
+            if (pageNumber > 0 && pageSize > 0)
+            {
+                testIssues = await _repository.GetPage(pageNumber, pageSize, searchText);
+                pageCount = await _repository.GetPageCount(pageSize, searchText);
+                HttpContext.Response.Headers.Add("totalPages", (pageCount >= 1) ? pageCount.ToString() : "1");
+                return _mapper.Map<List<TestIssue>, List<TestIssueResource>>(testIssues);
+            }
+            
+            testIssues = await _repository.GetAll();
             return _mapper.Map<List<TestIssue>, List<TestIssueResource>>(testIssues);
         }
 

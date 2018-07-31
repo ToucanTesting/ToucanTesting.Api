@@ -23,6 +23,7 @@ namespace ToucanTesting.Data
         public async Task<List<TestIssue>> GetAll()
         {
             return await _context.TestIssues
+                .OrderByDescending(i => i.CreatedAt)
                 .ToListAsync();
         }
 

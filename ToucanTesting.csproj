@@ -21,6 +21,6 @@
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
-    <Content Include="appsettings.Perch.json" />
+    <Content Include=".vscode\launch.json" />
   </ItemGroup>
 </Project>

@@ -29,17 +29,9 @@ namespace ToucanTesting.Controllers.TestSuites
         [HttpGet]
         public async Task<IActionResult> GetTestSuites()
         {
-            try
-            {
-                var testSuites = await _repository.GetSuites();
+            var testSuites = await _repository.GetSuites();
 
-                return Ok(_mapper.Map<List<TestSuite>, List<TestSuiteResource>>(testSuites));
-            }
-            catch (Exception error)
-            {
-                return BadRequest(error);
-            }
-
+            return Ok(_mapper.Map<List<TestSuite>, List<TestSuiteResource>>(testSuites));
         }
 
         [HttpGet("{id}/export")]

@@ -10,6 +10,7 @@ namespace ToucanTesting.Data
         Task<TestResult> Get (long id);
         Task<List<TestResult>> GetAll(long testRunId);
         Task<List<TestResult>> GetAll(long testRunId, long testModuleId);
+        Task<TestResult> GetIfExists(TestResult testResult);
         void Add (TestResult testResult);
         void Update(TestResult testResult);
     }

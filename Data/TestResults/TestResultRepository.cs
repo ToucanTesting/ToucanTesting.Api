@@ -21,6 +21,12 @@ namespace ToucanTesting.Data
             return await _context.TestResults.SingleOrDefaultAsync(r => r.Id == id);
         }
 
+        public async Task<TestResult> GetIfExists(TestResult testResult)
+        {
+            return await _context.TestResults.FirstOrDefaultAsync(x =>
+                x.TestRunId == testResult.TestRunId && x.TestCaseId == testResult.TestCaseId);
+        }
+
         public async Task<List<TestResult>> GetAll(long testRunId)
         {
             return await _context.TestResults.Where(r => r.TestRunId == testRunId).ToListAsync();

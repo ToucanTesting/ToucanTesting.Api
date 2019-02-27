@@ -26,15 +26,25 @@ namespace ToucanTesting.Controllers.TestResults
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateTestResult([FromBody] TestResultResource resource)
+        public async Task<IActionResult> CreateTestResult([FromBody] TestResultResource testResultResource)
         {
-            var testResult = _mapper.Map<TestResultResource, TestResult>(resource);
-            _repository.Add(testResult);
-            await _unitOfWork.CompleteAsync();
+            var testResult = _mapper.Map<TestResultResource, TestResult>(testResultResource);
+            var existsResult = await _repository.GetIfExists(testResult);
+
+            if (existsResult == null)
+            {
+                _repository.Add(testResult);
+            }
+            else
+            {
+                testResult = _mapper.Map<TestResultResource, TestResult>(testResultResource, existsResult);
+                _repository.Update(testResult);
+            }
 
             var result = _mapper.Map<TestResult, TestResultResource>(testResult);
-
+            await _unitOfWork.CompleteAsync();
             return Ok(result);
+
         }
 
         [HttpGet]

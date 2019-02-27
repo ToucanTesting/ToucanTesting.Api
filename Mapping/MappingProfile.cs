@@ -42,8 +42,10 @@ namespace ToucanTesting.Mapping
             CreateMap<TestConditionResource, TestCondition>();
 
             CreateMap<TestResult, TestResultResource>();
-            CreateMap<TestResultResource, TestResult>();
-            
+            CreateMap<TestResultResource, TestResult>()
+                .ForMember(c => c.Id, opt => opt.Ignore());
+
+
             CreateMap<TestIssue, TestIssueResource>();
             CreateMap<TestIssueResource, TestIssue>();
 
